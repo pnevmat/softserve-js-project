@@ -1,0 +1,138 @@
+.footer {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-right: 8px;
+  padding-left: 8px;
+  margin-top: 48px;
+  background-color: #f1f1f1;
+  font-family: verlag, helvetica, arial, sans-serif;
+  font-size: 16px;
+}
+
+.footer_site_map_list {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  font-weight: 300;
+}
+
+.footer_site_map_category_name {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.footer_site_map_category_item {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.footer_site_map_category_item > a,
+.footer_site_map_category_item > p {
+  display: block;
+  color: #000000;
+}
+
+.footer_site_map_category_item > a:hover {
+  text-decoration: underline !important;
+}
+
+.footer_site_map_category_item.social {
+  margin-bottom: 0;
+}
+
+.footer_site_map_category_item_social_liks_list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.footer_site_map_category_item_social_lik {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 4px;
+}
+
+.footer_site_map_category_item_social_lik.last {
+  margin-right: 0;
+}
+
+.footer_site_map_category_item_social_lik > a {
+  display: block;
+  width: 26px;
+  height: 26px;
+  background-image: url('../images/icons-sprite1x.png');
+  background-repeat: no-repeat;
+}
+
+.instagram {
+  background-position: -311px 0;
+}
+
+.facebook {
+  background-position: -229px 0;
+}
+
+.twitter {
+  background-position: -389px 0;
+}
+
+.pinterest {
+  background-position: -337px 0;
+}
+
+.youtube {
+  background-position: -415px 0;
+}
+
+.footer_docs_links_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.footer_docs_link {
+  padding-right: 10px;
+  padding-left: 10px;
+  border-right: 1px solid #000;
+  font-weight: 300;
+}
+
+.footer_docs_link.last {
+  border-right: none;
+}
+
+.footer_docs_link > a {
+  color: #1f1f1f;
+}
+
+.footer_accept_cards {
+  width: 173px;
+  height: 25px;
+  margin-bottom: 48px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url('../images/icons-sprite1x.png');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.footer_copyright {
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.footer_copyright > a {
+  color: #1f1f1f;
+  text-decoration: underline !important;
+}

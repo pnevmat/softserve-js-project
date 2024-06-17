@@ -1,3 +1,6 @@
+const location = window.location.pathname.split('/');
+const page = location.length <= 2 ? '/' : location[1];
+
 const layout = `
 <section class="header">
 	<div class="header_tools_wrapper">
@@ -5,8 +8,12 @@ const layout = `
 			<picture>
 				<img 
 					class="header_logo_img"
-					src="./images/logo1x.png"
-					srcset="./images/logo1x.png 1x, ./images/logo2x.png 2x"
+					./src/images/logo1x.png
+					src=${getImgPath(page, 'logo1x.png')}
+					srcset=${getImgPath(page, 'logo1x.png')} 1x, ${getImgPath(
+  page,
+  'logo2x.png',
+)} 2x
 					alt="6pm - Your Premier Destination for Discount Fashion"
 				/>
 			</picture>
@@ -77,4 +84,6 @@ const layout = `
 </section>
 `;
 
-document.getElementById('root').innerHTML = layout;
+const root = document.getElementById('root');
+
+root.innerHTML = layout + root.innerHTML;
