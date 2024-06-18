@@ -1,0 +1,89 @@
+.shipping_questions {
+  max-width: 1440px;
+  margin-bottom: 64px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: verlag, helvetica, arial, sans-serif;
+}
+
+.shipping_questions_title {
+  margin-bottom: 16px;
+  font-family: verlagcond, helvetica, arial, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: rgb(31, 31, 31);
+}
+
+.shipping_questions_links_list {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 57px;
+  margin-left: 57px;
+}
+
+.shipping_questions_link {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(31, 31, 31);
+  text-decoration: underline !important;
+}
+
+.shipping_questions_link:hover {
+  color: rgb(174, 67, 67);
+  text-decoration: underline !important;
+}
+
+.shipping_answers_list {
+  margin-left: 80px;
+}
+
+.shipping_answers_list_item {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-top: 1px dotted #b4b4b4;
+}
+
+.shipping_answers_list_item_question {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+.shipping_answers_list_item_question_marker,
+.shipping_answers_list_item_answer_marker {
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: underline;
+}
+
+.shipping_answers_list_item_question_title {
+  font-size: 18px;
+  color: #1f1f1f;
+}
+
+.shipping_answers_list_item_answer {
+  display: flex;
+  gap: 15px;
+}
+
+.shipping_answers_list_item_answer_text {
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f1f1f;
+}
+
+.shipping_answers_list_item_return_link {
+  font-family: verlag, helvetica, arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+  text-decoration: underline !important;
+}
+
+.shipping_answers_list_item_return_link:hover {
+  color: #ae4343;
+  text-decoration: underline !important;
+}
