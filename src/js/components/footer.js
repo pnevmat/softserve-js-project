@@ -1,4 +1,5 @@
-const layout = `
+export function footer() {
+  return `
 <footer class="footer">
       <ul class="footer_site_map_list">
         <li>
@@ -103,6 +104,4 @@ const layout = `
       </div>
     </footer>
 `;
-
-const root = document.getElementById('root');
-root.innerHTML += layout;
+}

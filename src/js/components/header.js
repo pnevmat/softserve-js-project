@@ -1,7 +1,7 @@
-const location = window.location.pathname.split('/');
-const page = location.length <= 2 ? '/' : location[1];
+import { getImgPath } from '../helpers/imagesPaths.js';
 
-const layout = `
+export function header(page) {
+  return `
 <section class="header">
 	<div class="header_tools_wrapper">
 		<a class="header_logo_container" href="/">
@@ -10,10 +10,8 @@ const layout = `
 					class="header_logo_img"
 					./src/images/logo1x.png
 					src=${getImgPath(page, 'logo1x.png')}
-					srcset=${getImgPath(page, 'logo1x.png')} 1x, ${getImgPath(
-  page,
-  'logo2x.png',
-)} 2x
+					srcset=${getImgPath(page, 'logo1x.png')} 1x,
+						${getImgPath(page, 'logo2x.png')} 2x
 					alt="6pm - Your Premier Destination for Discount Fashion"
 				/>
 			</picture>
@@ -51,8 +49,13 @@ const layout = `
 			<div class="header_nav_popup">
 				<ul class="header_nav_popup_ctegory_list">
 					<li class="header_nav_popup_ctegory_item">
-						<a class="header_nav_popup_ctegory_name">Women's</a>
-						<a class="header_nav_popup_ctegory_link" href="">Boots</a>
+						<a
+							class="header_nav_popup_ctegory_name"
+							href="/products?category=womens"
+						>
+							Women's
+						</a>
+						<a class="header_nav_popup_ctegory_link" href="/products?category=womens&subcategory=boots">Boots</a>
 					</li>
 				</ul>
 			</div>
@@ -83,7 +86,4 @@ const layout = `
 	</div>
 </section>
 `;
-
-const root = document.getElementById('root');
-
-root.innerHTML = layout + root.innerHTML;
+}
