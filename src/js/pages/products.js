@@ -1,14 +1,29 @@
 import { header } from '../components/header.js';
 import { footer } from '../components/footer.js';
+import { activeFilter } from '../components/activeFilter.js';
+import { leftFilter } from '../components/leftFilter.js';
+import { getTitle } from '../helpers/getTitle.js';
 
 export function productsPage(page) {
+  const searchParams = window.location.search.split('?').join('');
+  const categoriesArr = searchParams.split('&').map(category => {
+    const splitedCategory = category.split('=');
+    return { [splitedCategory[0]]: splitedCategory[1] };
+  });
+
+  const title = getTitle(categoriesArr);
+
+  const activeFiltersLayout = categoriesArr.map(category => {
+    return activeFilter(page, categoriesArr, category);
+  });
+
   return `
 	${header(page)}
 		<section class="products">
         <div>
           <div>
-            <div id="title"></div>
-            <p><span id="products-quantity"></span><span></span></p>
+            <h1>${title.join(' ')}</h1>
+            <p><span id="products-quantity"></span><span>items found</span></p>
           </div>
           <div>
             <span></span>
@@ -22,72 +37,18 @@ export function productsPage(page) {
           </div>
         </div>
         <div>
-          <div>
-            <ul>
-              <h2>Narrow Choices</h2>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-              <li>
-                <h3></h3>
-                <ul></ul>
-              </li>
-            </ul>
-          </div>
+					<div>
+						<h2>Narrow Choices</h2>
+      			<ul>
+          		${leftFilter()}
+						</ul>
+					</div>
           <div>
             <div>
               <div>
-                <p></p>
+                <p>Your Selections</p>
                 <ul>
-                  <li>
-                    <span></span>
-                    <img src="" alt="" />
-                  </li>
+                  ${activeFiltersLayout.join('')}
                 </ul>
               </div>
               <button>Clear all filters</button>
