@@ -14,22 +14,29 @@ export function productsPage(page) {
     return { [splitedCategory[0]]: splitedCategory[1] };
   });
 
-  const title = getTitle(categoriesArr);
+  const titleCategoriesArr = categoriesArr.filter(
+    category =>
+      Object.keys(category).includes('category') ||
+      Object.keys(category).includes('subcategory'),
+  );
+  const title = getTitle(titleCategoriesArr);
 
-  const activeFiltersLayout = categoriesArr.map(category => {
-    return activeFilter(page, categoriesArr, category);
-  });
+  const activeFiltersLayout = categoriesArr
+    .filter(cat => Object.keys(cat)[0] !== 'sort')
+    .map(category => {
+      return activeFilter(page, categoriesArr, category);
+    });
 
   const filtersArr = [
     {
       name: 'category',
       options: [
-        { name: 'Sandals', quantity: 10 },
-        { name: 'Heels', quantity: 10 },
+        { name: 'sandals', quantity: 10 },
+        { name: 'heels', quantity: 10 },
       ],
     },
     {
-      name: "Women's Size",
+      name: "women's size",
       options: [
         { name: '1', quantity: null },
         { name: '1.5', quantity: null },
@@ -38,7 +45,7 @@ export function productsPage(page) {
       ],
     },
     {
-      name: "Women's Width",
+      name: "women's width",
       options: [
         { name: 'ss', quantity: null },
         { name: 's', quantity: null },
@@ -47,7 +54,7 @@ export function productsPage(page) {
       ],
     },
     {
-      name: 'Price',
+      name: 'price',
       options: [
         { name: '$10.00 and Under', quantity: 5 },
         { name: '$25.00 and Under', quantity: 3 },
@@ -56,80 +63,81 @@ export function productsPage(page) {
       ],
     },
     {
-      name: 'Color',
+      name: 'color',
       options: [
-        { name: 'Black', quantity: 10 },
-        { name: 'Brown', quantity: 11 },
-        { name: 'White', quantity: 20 },
-        { name: 'Beige', quantity: 3 },
+        { name: 'black', quantity: 10 },
+        { name: 'brown', quantity: 11 },
+        { name: 'white', quantity: 20 },
+        { name: 'beige', quantity: 3 },
       ],
     },
     {
-      name: 'Styles',
+      name: 'styles',
       options: [
-        { name: 'Comfort', quantity: 5 },
-        { name: 'Platform', quantity: 7 },
-        { name: 'Slide', quantity: 8 },
-        { name: 'Wedges', quantity: 7 },
+        { name: 'comfort', quantity: 5 },
+        { name: 'platform', quantity: 7 },
+        { name: 'slide', quantity: 8 },
+        { name: 'wedges', quantity: 7 },
       ],
     },
     {
-      name: 'Occasion',
+      name: 'occasion',
       options: [
-        { name: 'Casual', quantity: 7 },
-        { name: 'Dress', quantity: 7 },
-        { name: 'Athletic', quantity: 7 },
-        { name: 'Outdoor', quantity: 7 },
+        { name: 'casual', quantity: 7 },
+        { name: 'dress', quantity: 7 },
+        { name: 'athletic', quantity: 7 },
+        { name: 'outdoor', quantity: 7 },
       ],
     },
     {
-      name: 'Features',
+      name: 'features',
       options: [
-        { name: 'Strappy', quantity: 7 },
-        { name: 'Leather Outsole', quantity: 7 },
-        { name: 'Waterproof', quantity: 7 },
-        { name: 'Arch Support', quantity: 7 },
+        { name: 'strappy', quantity: 7 },
+        { name: 'leather outsole', quantity: 7 },
+        { name: 'waterproof', quantity: 7 },
+        { name: 'arch support', quantity: 7 },
       ],
     },
     {
-      name: 'Materials',
+      name: 'materials',
       options: [
-        { name: 'Leather', quantity: 7 },
-        { name: 'Manmade', quantity: 7 },
-        { name: 'Fabric', quantity: 7 },
-        { name: 'Suede', quantity: 7 },
+        { name: 'leather', quantity: 7 },
+        { name: 'manmade', quantity: 7 },
+        { name: 'fabric', quantity: 7 },
+        { name: 'suede', quantity: 7 },
       ],
     },
     {
-      name: 'Pattern',
+      name: 'pattern',
       options: [
-        { name: 'Solid', quantity: 7 },
-        { name: 'Metallic', quantity: 7 },
-        { name: 'Reptile', quantity: 7 },
-        { name: 'Animal Print', quantity: 7 },
+        { name: 'solid', quantity: 7 },
+        { name: 'metallic', quantity: 7 },
+        { name: 'reptile', quantity: 7 },
+        { name: 'animal print', quantity: 7 },
       ],
     },
     {
-      name: 'Theme',
+      name: 'theme',
       options: [
-        { name: 'Action Sports', quantity: 7 },
-        { name: 'Winter', quantity: 7 },
-        { name: 'Athletic Inspired', quantity: 7 },
-        { name: 'Western', quantity: 7 },
+        { name: 'action sports', quantity: 7 },
+        { name: 'winter', quantity: 7 },
+        { name: 'athletic inspired', quantity: 7 },
+        { name: 'western', quantity: 7 },
       ],
     },
     {
-      name: 'Accents',
+      name: 'accents',
       options: [
-        { name: 'Buckle', quantity: 7 },
-        { name: 'Rhinestones', quantity: 7 },
-        { name: 'Perforated', quantity: 7 },
-        { name: 'Studded', quantity: 7 },
+        { name: 'buckle', quantity: 7 },
+        { name: 'rhinestones', quantity: 7 },
+        { name: 'perforated', quantity: 7 },
+        { name: 'studded', quantity: 7 },
       ],
     },
   ];
-
-  const filters = filtersArr.map(option => leftFilter(option)).join('');
+  const filters = filtersArr
+    .map(option => leftFilter(option, page, categoriesArr))
+    .join('');
 
   const productsArr = [
     {
@@ -352,8 +360,30 @@ export function productsPage(page) {
       accent: 'studded',
     },
   ];
+  let searchObj = {};
+  searchParams.split('&').forEach(param => {
+    const paramArr = param.split('=');
+    if (paramArr[0] !== 'sort') searchObj[paramArr[0]] = paramArr[1];
+  });
+  const sortParam = searchParams
+    .split('&')
+    .find(param => param.includes('sort'))
+    ? searchParams
+        .split('&')
+        .find(param => param.includes('sort'))
+        .split('=')[1]
+    : null;
+  const filteredProducts = getFilteredProducts(productsArr, searchObj).sort(
+    (a, b) => {
+      if (sortParam === 'price-asc' && a.price < b.price) {
+        return -1;
+      }
 
-  const filteredProducts = getFilteredProducts(productsArr, {});
+      if (sortParam === 'price-desc' && a.price > b.price) {
+        return -1;
+      }
+    },
+  );
 
   return `
 	${header(page)}
@@ -372,8 +402,8 @@ export function productsPage(page) {
             <span></span>
             <select name="sort" id="products-sort">
               <option value="newest" selected>Newest</option>
-              <option value="lowest-price">Lowest Price</option>
-              <option value="highest-price">Highest Price</option>
+              <option value="price-asc">Lowest Price</option>
+              <option value="price-desc">Highest Price</option>
             </select>
           </div>
         </div>
@@ -394,7 +424,7 @@ export function productsPage(page) {
               </div>
               <button>Clear all filters</button>
             </div>
-            <ul>
+            <ul id="products-list">
 							${filteredProducts.map(product => productCard(product)).join('')}
 						</ul>
           </div>

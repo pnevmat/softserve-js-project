@@ -1,9 +1,14 @@
-export function leftFilter(option) {
-  const linksArr = option.options.map(link => {
+import { getLinkPath } from '../helpers/getLinkPath.js';
+
+export function leftFilter(option, page, categoriesArr) {
+  const linksArr = option.options.map((link, i) => {
+    const linkPath = getLinkPath(page, categoriesArr, option, 'add', i);
     return `
 			<li>
-				<span>${link.name}</span>
-				<span>(${link.quantity})</span>
+				<a href="${linkPath}">
+					<span>${link.name}</span>
+					<span>(${link.quantity})</span>
+				</a>
 			</li>
 		`;
   });
