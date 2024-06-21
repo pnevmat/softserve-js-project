@@ -16,9 +16,10 @@ const pathsObj = {
   },
 };
 
-export function getImgPath(page, imgName) {
+export function getImgPath(page, imgName, type) {
   try {
-    return pathsObj[page][imgName];
+    if (!type) return pathsObj[page][imgName];
+    if (type === 'product') return `../src/images/${imgName}`;
   } catch (e) {
     throw new Error('Page or image is not exist');
   }
