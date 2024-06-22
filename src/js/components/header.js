@@ -4,7 +4,10 @@ export function header(page, baseUrlFolder) {
   return `
 <section class="header">
 	<div class="header_tools_wrapper">
-		<a class="header_logo_container" href="/">
+		<a
+			class="header_logo_container"
+			href="${baseUrlFolder ? `/` + baseUrlFolder : ''}/"
+		>
 			<picture>
 				<img 
 					class="header_logo_img"
@@ -53,7 +56,7 @@ export function header(page, baseUrlFolder) {
 					<li class="header_nav_popup_ctegory_item">
 						<a
 							class="header_nav_popup_ctegory_name"
-							href="/${
+							href="${
                 baseUrlFolder ? `/` + baseUrlFolder : ''
               }/products/?category=shoes&subcategory=women"
 						>
@@ -61,11 +64,19 @@ export function header(page, baseUrlFolder) {
 						</a>
 						<a 
 							class="header_nav_popup_ctegory_link"
-							href="/${
+							href="${
                 baseUrlFolder ? `/` + baseUrlFolder : ''
-              }/products?category=womens&subcategory=boots"
+              }/products?category=shoes&subcategory=women&subsubcategory=sandals"
 						>
-							Boots
+							Sandals
+						</a>
+						<a 
+							class="header_nav_popup_ctegory_link"
+							href="${
+                baseUrlFolder ? `/` + baseUrlFolder : ''
+              }/products?category=shoes&subcategory=women&subsubcategory=heels"
+						>
+							Heels
 						</a>
 					</li>
 				</ul>
