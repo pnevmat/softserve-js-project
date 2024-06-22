@@ -9,12 +9,15 @@ const router = () => {
     location.split('/').find(elem => elem === 'softserve-js-project')
       ? '/'
       : location.split('/')[1];
-  console.log('Router page: ', page);
+  const baseUrlFolder = location
+    .split('/')
+    .find(elem => elem === 'softserve-js-project');
+
   const root = document.getElementById('root');
 
   switch (page) {
     case '/':
-      root.innerHTML = homePage(page);
+      root.innerHTML = homePage(baseUrlFolder, page);
       break;
     case 'shipping-and-delivery-questions':
       root.innerHTML = shippingAndDeliveryQuestionsPage(page);

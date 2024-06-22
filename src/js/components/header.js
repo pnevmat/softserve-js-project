@@ -1,6 +1,6 @@
 import { getImgPath } from '../helpers/imagesPaths.js';
 
-export function header(page) {
+export function header(baseUrlFolder, page) {
   return `
 <section class="header">
 	<div class="header_tools_wrapper">
@@ -51,7 +51,9 @@ export function header(page) {
 					<li class="header_nav_popup_ctegory_item">
 						<a
 							class="header_nav_popup_ctegory_name"
-							href="/products/?category=shoes&subcategory=women"
+							href="${
+                baseUrlFolder ? baseUrlFolder : ''
+              }/products/?category=shoes&subcategory=women"
 						>
 							Women's
 						</a>
