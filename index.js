@@ -6,7 +6,7 @@ const router = () => {
   const location = window.location.pathname;
   const page =
     location.split('/').length <= 2 ||
-    location.split('/').contain('softserve-js-project')
+    location.split('/').contains('softserve-js-project')
       ? '/'
       : location.split('/')[1];
   console.log('Router page: ', page);
