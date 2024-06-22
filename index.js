@@ -4,14 +4,15 @@ import { productsPage } from './src/js/pages/products.js';
 
 const router = () => {
   const location = window.location.pathname;
-  const page =
-    location.split('/').length <= 2 ||
-    location.split('/').find(elem => elem === 'softserve-js-project')
-      ? '/'
-      : location.split('/')[1];
   const baseUrlFolder = location
     .split('/')
     .find(elem => elem === 'softserve-js-project');
+
+  const page =
+    location.split('/').length <= 2 ||
+    (location.split('/').length <= 3 && baseUrlFolder)
+      ? '/'
+      : location.split('/')[1];
   console.log('Location spleted: ', location.split('/'));
   const root = document.getElementById('root');
 
