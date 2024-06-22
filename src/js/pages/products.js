@@ -7,7 +7,7 @@ import { getTitle } from '../helpers/getTitle.js';
 import { getFilteredProducts } from '../helpers/getFilteredProducts.js';
 import { getImgPath } from '../helpers/imagesPaths.js';
 
-export function productsPage(page) {
+export function productsPage(page, baseUrlFolder) {
   const searchParams = window.location.search.split('?').join('');
   const categoriesArr = searchParams.split('&').map(category => {
     const splitedCategory = category.split('=');
@@ -24,7 +24,7 @@ export function productsPage(page) {
   const activeFiltersLayout = categoriesArr
     .filter(cat => Object.keys(cat)[0] !== 'sort')
     .map(category => {
-      return activeFilter(page, categoriesArr, category);
+      return activeFilter(page, categoriesArr, category, baseUrlFolder);
     });
 
   const filtersArr = [
@@ -136,7 +136,7 @@ export function productsPage(page) {
     },
   ];
   const filters = filtersArr
-    .map(option => leftFilter(option, page, categoriesArr))
+    .map(option => leftFilter(option, page, categoriesArr, baseUrlFolder))
     .join('');
 
   const productsArr = [

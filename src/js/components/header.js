@@ -1,6 +1,6 @@
 import { getImgPath } from '../helpers/imagesPaths.js';
 
-export function header(baseUrlFolder, page) {
+export function header(page, baseUrlFolder) {
   return `
 <section class="header">
 	<div class="header_tools_wrapper">

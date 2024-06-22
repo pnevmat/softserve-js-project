@@ -1,8 +1,15 @@
 import { getLinkPath } from '../helpers/getLinkPath.js';
 
-export function leftFilter(option, page, categoriesArr) {
+export function leftFilter(option, page, categoriesArr, baseUrlFolder) {
   const linksArr = option.options.map((link, i) => {
-    const linkPath = getLinkPath(page, categoriesArr, option, 'add', i);
+    const linkPath = getLinkPath(
+      page,
+      categoriesArr,
+      option,
+      'add',
+      i,
+      baseUrlFolder,
+    );
     const specialClasses =
       option.name === "women's size" || option.name === "women's width"
         ? { hidden: 'hidden', card: 'card', inlineBlock: 'inline_block' }

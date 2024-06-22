@@ -17,13 +17,13 @@ const router = () => {
 
   switch (page) {
     case '/':
-      root.innerHTML = homePage(baseUrlFolder, page);
+      root.innerHTML = homePage(page, baseUrlFolder);
       break;
     case 'shipping-and-delivery-questions':
       root.innerHTML = shippingAndDeliveryQuestionsPage(page);
       break;
     case 'products':
-      root.innerHTML = productsPage(page);
+      root.innerHTML = productsPage(page, baseUrlFolder);
       break;
 
     default:
