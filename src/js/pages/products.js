@@ -155,7 +155,7 @@ export function productsPage(page) {
         getImgPath('products', 'carterG6.jpg', 'product'),
       ],
       category: 'shoes',
-      subcategory: 'womens',
+      subcategory: 'women',
       subsubcategory: 'sandals',
       size: 1,
       width: 'm',
@@ -182,7 +182,7 @@ export function productsPage(page) {
         getImgPath('products', 'wed5.jpg', 'product'),
       ],
       category: 'shoes',
-      subcategory: 'womens',
+      subcategory: 'women',
       subsubcategory: 'heels',
       size: 1.5,
       width: 'n',
@@ -210,7 +210,7 @@ export function productsPage(page) {
         getImgPath('products', 'asteroidG6.jpg', 'product'),
       ],
       category: 'shoes',
-      subcategory: 'womens',
+      subcategory: 'women',
       subsubcategory: 'sandals',
       size: 2,
       width: 'm',
@@ -237,7 +237,7 @@ export function productsPage(page) {
         getImgPath('products', 'rover5.jpg', 'product'),
       ],
       category: 'shoes',
-      subcategory: 'womens',
+      subcategory: 'women',
       subsubcategory: 'heels',
       size: 3,
       width: 'm',
@@ -264,7 +264,7 @@ export function productsPage(page) {
         getImgPath('products', 'mxFlipsider5.jpg', 'product'),
       ],
       category: 'shoes',
-      subcategory: 'womens',
+      subcategory: 'women',
       subsubcategory: 'sandals',
       size: 3,
       width: 'm',
@@ -292,7 +292,7 @@ export function productsPage(page) {
         getImgPath('products', 'dalian6.jpg', 'product'),
       ],
       category: 'shoes',
-      subcategory: 'womens',
+      subcategory: 'women',
       subsubcategory: 'heels',
       size: 1.5,
       width: 'n',
@@ -319,7 +319,7 @@ export function productsPage(page) {
         getImgPath('products', 'nelina5.jpg', 'product'),
       ],
       category: 'shoes',
-      subcategory: 'womens',
+      subcategory: 'women',
       subsubcategory: 'sandals',
       size: 2,
       width: 'n',
@@ -346,7 +346,7 @@ export function productsPage(page) {
         getImgPath('products', 'shandra5.jpg', 'product'),
       ],
       category: 'shoes',
-      subcategory: 'womens',
+      subcategory: 'women',
       subsubcategory: 'heels',
       size: 3,
       width: 'm',
@@ -388,43 +388,47 @@ export function productsPage(page) {
   return `
 	${header(page)}
 		<section class="products">
-        <div>
-          <div>
-            <h1>${title.join(' ')}</h1>
-            <p>
-							<span id="products-quantity">
+        <div class="products_sort_goup_container">
+          <div class="products_sort_title_container">
+            <h1 class="products_sort_title">${title.join(' ')}</h1>
+            <p class="products_sort_found">
+							<span>
 								(${filteredProducts.length})
 							</span>
 							<span>items found</span>
 						</p>
           </div>
           <div>
-            <span></span>
-            <select name="sort" id="products-sort">
+            <span class="products_sort_label">Sort By</span>
+            <select class="products_sort_select" name="sort" id="products-sort">
               <option value="newest" selected>Newest</option>
               <option value="price-asc">Lowest Price</option>
               <option value="price-desc">Highest Price</option>
             </select>
           </div>
         </div>
-        <div>
-					<div>
-						<h2>Narrow Choices</h2>
-      			<ul>
+        <div class="products_list_container">
+					<div class="products_left_filter_container">
+						<h2 class="products_left_filter_title">Narrow Choices</h2>
+      			<ul class="products_left_filter_list">
           		${filters}
 						</ul>
 					</div>
-          <div>
-            <div>
-              <div>
-                <p>Your Selections</p>
-                <ul>
+          <div class="products_list_wrapper">
+            <div class="products_list_active_filters_container">
+              <div class="products_list_active_filters_wrapper">
+                <p class="products_list_active_filters_title">
+									Your Selections
+								</p>
+                <ul class="products_list_active_filters_list">
                   ${activeFiltersLayout.join('')}
                 </ul>
               </div>
-              <button>Clear all filters</button>
+              <button class="products_list_active_filters_btn">
+								Clear all filters
+							</button>
             </div>
-            <ul id="products-list">
+            <ul class="products_list">
 							${filteredProducts.map(product => productCard(product)).join('')}
 						</ul>
           </div>

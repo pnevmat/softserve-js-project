@@ -51,7 +51,7 @@ export function header(page) {
 					<li class="header_nav_popup_ctegory_item">
 						<a
 							class="header_nav_popup_ctegory_name"
-							href="/products/?category=shoes&subcategory=womens"
+							href="/products/?category=shoes&subcategory=women"
 						>
 							Women's
 						</a>

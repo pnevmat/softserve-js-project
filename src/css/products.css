@@ -1,0 +1,326 @@
+.products {
+  width: 100%;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: verlag, helvetica, arial, sans-serif;
+}
+
+.products_sort_goup_container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  margin-bottom: 16px;
+}
+
+.products_sort_title_container {
+  min-width: 222px;
+}
+
+.products_sort_title {
+  font-family: verlagcond, helvetica, arial, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #1f1f1f;
+  text-transform: capitalize;
+}
+
+.products_sort_found {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.products_sort_label {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.products_sort_select {
+  display: inline-block;
+  width: 175px;
+  height: 42px;
+  padding: 3px 3px 3px 13px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-left: 10px;
+  appearance: none;
+  background-color: #fff;
+  background-image: url('../images/selectArrowDown.svg');
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  color: #000;
+  font-size: 14px;
+  line-height: 36px;
+  transition: all 0.3s ease 0s;
+}
+
+.products_sort_select:focus {
+  outline: 2px dashed #ae4343;
+  outline-offset: 1px;
+  transition: outline 0s !important;
+}
+
+.products_list_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.products_left_filter_container {
+  width: 100%;
+  max-width: 184px;
+  background-color: #ffffff;
+}
+
+.products_left_filter_title {
+  margin-bottom: 26px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.products_left_filter_list > :not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.products_left_filter_item_title {
+  font-size: 18px;
+  line-height: 20px;
+  text-transform: capitalize;
+}
+
+.products_left_filter_item_options_list {
+  display: block;
+  min-height: 50px;
+  max-height: 175px;
+  padding-top: 7px;
+  overflow: auto;
+  transition: max-height, padding 0.25s ease;
+}
+
+.products_left_filter_item_options_list::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #00000080;
+  -webkit-box-shadow: 0 0 1px #ffffff80;
+}
+
+.products_left_filter_item_options_list > .inline_block {
+  display: inline-block;
+  width: 100%;
+  max-width: 41px;
+}
+
+.products_left_filter_item_option_link {
+  display: block;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f1f1f;
+}
+
+.products_left_filter_item_option_link:hover {
+  color: #ae4343;
+  cursor: pointer;
+}
+
+.products_left_filter_item_option_link.card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 8px);
+  height: 34px;
+  border: 1px solid #ddd;
+  margin-bottom: 8px;
+  margin-left: 6px;
+  background: #fff;
+  color: #1f1f1f;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 34px;
+  transition: all 0.3s ease 0s;
+  white-space: nowrap;
+}
+
+.products_left_filter_item_option_link_text {
+  text-transform: capitalize;
+}
+
+.products_list_wrapper {
+  width: 100%;
+  max-width: calc(100% - 232px);
+}
+
+.products_list_active_filters_container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.products_list_active_filters_wrapper {
+  width: calc(100% - 90px);
+}
+
+.products_list_active_filters_title {
+  margin-bottom: 16px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.products_list_active_filters_list {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.products_list_active_filters_list > li {
+  display: inline-block;
+}
+
+.products_list_active_filter_link {
+  position: relative;
+  display: inline-block;
+  padding: 8px 32px 8px 16px;
+  border: 1px solid #0000;
+  border-radius: 30px;
+  margin: 0.3em;
+  background: #f1f1f1;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.products_list_active_filter_close {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('../images/melody-sprite.png');
+  background-size: 1710% 2000%;
+  background-position: -145px -2px;
+  background-repeat: no-repeat;
+}
+
+.products_list_active_filter_link:hover {
+  border: 1px solid #1f1f1f;
+}
+
+.products_list_active_filters_btn {
+  display: inline-block;
+  min-width: 110px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  outline: none;
+  margin: 0 8px 12px 0;
+  background-color: initial;
+  color: #1f1f1f;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.products_list_active_filters_btn:hover {
+  color: #707070;
+  cursor: pointer;
+}
+
+.products_list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.products_list_product_card {
+  width: calc(25% - 12px);
+  margin: 4px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.products_list_product_card_img_container {
+  position: relative;
+}
+
+.products_list_product_card_btn_wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: right;
+}
+
+.products_list_product_card_btn {
+  width: 26px;
+  height: 26px;
+  padding: 4px;
+  border: none;
+  border-bottom-left-radius: 8px;
+  outline: none;
+  background-image: url('../images/melody-sprite.png');
+  background-size: 1580% 1600%;
+  background-position: -4px -140px;
+  background-repeat: no-repeat;
+  background-color: #ddd;
+}
+
+.products_list_product_card_btn:hover {
+  cursor: pointer;
+}
+
+.products_list_product_card_img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: -5px;
+}
+
+.products_list_product_card_text_container {
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.products_list_product_card_title,
+.products_list_product_card_text {
+  display: block;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #1f1f1f;
+}
+
+.products_list_product_card_title {
+  font-weight: 700;
+}
+
+.products_list_product_card_text {
+  font-weight: 400;
+}
+
+.price {
+  display: flex;
+  align-items: flex-end;
+  height: 32px;
+  color: #ae4343;
+}
+
+.products_list_product_card_link:hover > div > span {
+  color: #ae4343;
+}
+
+.products_list_product_card_link:hover
+  > div
+  > .products_list_product_card_title,
+.products_list_product_card_link:hover
+  > div
+  > .products_list_product_card_text {
+  text-decoration: underline;
+}
+
+.products_list_product_card_link:hover
+  > div
+  > .products_list_product_card_text.price {
+  text-decoration: none;
+}
+
+.products_list_product_card_link:hover
+  > div
+  > .products_list_product_card_text.price {
+  font-size: 18px;
+}
