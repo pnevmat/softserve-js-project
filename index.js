@@ -13,7 +13,7 @@ const router = () => {
     location.split('/').length <= 2 ||
     (location.split('/').length <= 3 && baseUrlFolder)
       ? '/'
-      : location.split('/')[location.split.length - 2];
+      : location.split('/')[location.split('/').length - 2];
   const root = document.getElementById('root');
   console.log('Pge to router: ', page);
   switch (page) {
