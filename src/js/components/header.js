@@ -51,13 +51,17 @@ export function header(page, baseUrlFolder) {
 					<li class="header_nav_popup_ctegory_item">
 						<a
 							class="header_nav_popup_ctegory_name"
-							href="/products/?category=shoes&subcategory=women"
+							href="/${
+                baseUrlFolder ? baseUrlFolder : ''
+              }/products/?category=shoes&subcategory=women"
 						>
 							Women's
 						</a>
 						<a 
 							class="header_nav_popup_ctegory_link"
-							href="/products?category=womens&subcategory=boots"
+							href="/${
+                baseUrlFolder ? baseUrlFolder : ''
+              }/products?category=womens&subcategory=boots"
 						>
 							Boots
 						</a>

@@ -20,7 +20,7 @@ const router = () => {
       root.innerHTML = homePage(page, baseUrlFolder);
       break;
     case 'shipping-and-delivery-questions':
-      root.innerHTML = shippingAndDeliveryQuestionsPage(page);
+      root.innerHTML = shippingAndDeliveryQuestionsPage(page, baseUrlFolder);
       break;
     case 'products':
       root.innerHTML = productsPage(page, baseUrlFolder);
