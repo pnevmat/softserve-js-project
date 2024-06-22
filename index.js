@@ -4,8 +4,12 @@ import { productsPage } from './src/js/pages/products.js';
 
 const router = () => {
   const location = window.location.pathname;
-  const page = location.split('/').length <= 2 ? '/' : location.split('/')[1];
-
+  const page =
+    location.split('/').length <= 2 ||
+    location.split('/').contain('softserve-js-project')
+      ? '/'
+      : location.split('/')[1];
+  console.log('Router page: ', page);
   const root = document.getElementById('root');
 
   switch (page) {
