@@ -17,9 +17,7 @@ export function header(page, baseUrlFolder) {
 			</picture>
 		</a>
 		<div class="header_shipping_container">
-			<a class="header_shipping_link" href="${
-        baseUrlFolder ? baseUrlFolder : ''
-      }/shipping-and-delivery-questions">
+			<a class="header_shipping_link" href="/shipping-and-delivery-questions">
 				<p>
 					<span>$100+ receives </span>
 					<span class="header_shipping_text_brown">free shipping </span>
@@ -53,13 +51,16 @@ export function header(page, baseUrlFolder) {
 					<li class="header_nav_popup_ctegory_item">
 						<a
 							class="header_nav_popup_ctegory_name"
-							href="${
-                baseUrlFolder ? baseUrlFolder : ''
-              }/products/?category=shoes&subcategory=women"
+							href="/products/?category=shoes&subcategory=women"
 						>
 							Women's
 						</a>
-						<a class="header_nav_popup_ctegory_link" href="/products?category=womens&subcategory=boots">Boots</a>
+						<a 
+							class="header_nav_popup_ctegory_link"
+							href="/products?category=womens&subcategory=boots"
+						>
+							Boots
+						</a>
 					</li>
 				</ul>
 			</div>
