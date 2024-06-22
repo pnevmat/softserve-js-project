@@ -12,7 +12,7 @@ const router = () => {
     location.split('/').length <= 2 ||
     (location.split('/').length <= 3 && baseUrlFolder)
       ? '/'
-      : location.split('/')[1];
+      : location.split('/')[location.split.length - 2];
   console.log('Location spleted: ', location.split('/'));
   const root = document.getElementById('root');
 
