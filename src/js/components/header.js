@@ -6,7 +6,7 @@ export function header(page, baseUrlFolder) {
 	<div class="header_tools_wrapper">
 		<a
 			class="header_logo_container"
-			href="${baseUrlFolder ? `/` + baseUrlFolder : ''}/"
+			href="${baseUrlFolder ? `/` + baseUrlFolder : '/'}"
 		>
 			<picture>
 				<img 
