@@ -1,9 +1,9 @@
 import { header } from '../components/header.js';
 import { footer } from '../components/footer.js';
 
-export function shippingAndDeliveryQuestionsPage(page) {
+export function shippingAndDeliveryQuestionsPage(page, baseUrlFolder) {
   return `
-		${header(page)}
+		${header(page, baseUrlFolder)}
 		<section class="shipping_questions">
         <h1 class="shipping_questions_title">
           Shipping and Delivery Questions
