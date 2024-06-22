@@ -7,15 +7,15 @@ const router = () => {
   const baseUrlFolder = location
     .split('/')
     .find(elem => elem === 'softserve-js-project');
+  console.log('Location spleted: ', location.split('/'));
 
   const page =
     location.split('/').length <= 2 ||
     (location.split('/').length <= 3 && baseUrlFolder)
       ? '/'
       : location.split('/')[location.split.length - 2];
-  console.log('Location spleted: ', location.split('/'));
   const root = document.getElementById('root');
-
+  console.log('Pge to router: ', page);
   switch (page) {
     case '/':
       root.innerHTML = homePage(page, baseUrlFolder);
