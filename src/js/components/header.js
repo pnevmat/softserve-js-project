@@ -17,8 +17,8 @@ export function header(page, baseUrlFolder) {
 			</picture>
 		</a>
 		<div class="header_shipping_container">
-			<a class="header_shipping_link" href="/${
-        baseUrlFolder ? baseUrlFolder : ''
+			<a class="header_shipping_link" href="${
+        baseUrlFolder ? `/` + baseUrlFolder : ''
       }/shipping-and-delivery-questions">
 				<p>
 					<span>$100+ receives </span>
@@ -54,7 +54,7 @@ export function header(page, baseUrlFolder) {
 						<a
 							class="header_nav_popup_ctegory_name"
 							href="/${
-                baseUrlFolder ? baseUrlFolder : ''
+                baseUrlFolder ? `/` + baseUrlFolder : ''
               }/products/?category=shoes&subcategory=women"
 						>
 							Women's
@@ -62,7 +62,7 @@ export function header(page, baseUrlFolder) {
 						<a 
 							class="header_nav_popup_ctegory_link"
 							href="/${
-                baseUrlFolder ? baseUrlFolder : ''
+                baseUrlFolder ? `/` + baseUrlFolder : ''
               }/products?category=womens&subcategory=boots"
 						>
 							Boots

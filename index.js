@@ -12,7 +12,7 @@ const router = () => {
   const baseUrlFolder = location
     .split('/')
     .find(elem => elem === 'softserve-js-project');
-
+  console.log('Location spleted: ', location.split('/'));
   const root = document.getElementById('root');
 
   switch (page) {

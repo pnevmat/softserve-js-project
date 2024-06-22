@@ -10,7 +10,7 @@ export function getLinkPath(
   let link = ``;
   if (action === 'remove') {
     const filteredArr = categoriesArr.filter(cat => cat[key] !== category[key]);
-    link = `${baseUrlFolder ? baseUrlFolder : ''}/${page}/?${filteredArr
+    link = `${baseUrlFolder ? `/` + baseUrlFolder : ''}/${page}/?${filteredArr
       .map(cat => `${Object.keys(cat)}=${Object.values(cat)}`)
       .join('&')}`;
 
@@ -20,7 +20,7 @@ export function getLinkPath(
   if (action === 'add') {
     const { name, options } = category;
     const rootLink = `${
-      baseUrlFolder ? baseUrlFolder : ''
+      baseUrlFolder ? `/` + baseUrlFolder : ''
     }/${page}/?${categoriesArr
       .map(cat => `${Object.keys(cat)}=${Object.values(cat)}`)
       .join('&')}`;
