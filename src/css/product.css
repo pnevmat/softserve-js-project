@@ -1,0 +1,123 @@
+.product {
+  padding-right: 32px;
+  padding-left: 32px;
+  font-family: verlag, helvetica, arial, sans-serif;
+}
+
+.product_nav {
+  width: 100%;
+  max-width: 1440px;
+  min-height: 19px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.product_container {
+  width: 100%;
+  max-width: 1440px;
+  margin-bottom: 22px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.product_images_container {
+  position: relative;
+  width: 65%;
+}
+
+.product_images_favorite_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.product_images_favorite_img {
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+}
+
+.product_images_list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product_images_list_item-first {
+  width: 100%;
+}
+
+.product_images_list_item_secondary_item {
+}
+
+.product_description_container {
+}
+
+.product_description_title_and_price_container {
+}
+
+.product_description_title {
+}
+
+.product_description_name {
+}
+
+.product_description_price_container {
+}
+
+.product_description_price_wrapper {
+}
+
+.product_description_price {
+}
+
+.product_description_interactives_container {
+}
+
+.product_description_color_filters_container {
+}
+
+.product_description_color_filters_title {
+}
+
+.product_description_color_filters_title > .filter_name {
+}
+
+.product_description_color_filters_title > .color {
+}
+
+.product_description_color_filters_cards_list {
+}
+
+.product_description_size_and_width_filters_container {
+}
+
+.product_description_size_filters_title {
+}
+
+.product_description_size_filters_list {
+}
+
+.product_description_width_filters_title {
+}
+
+.product_description_width_filters_list {
+}
+
+.product_description_add_to_cart_btn_container {
+}
+
+.product_description_add_to_cart_btn {
+}
+
+.product_description_information_container {
+}
+
+.product_description_information_title {
+}
+
+.product_description_information_description_container {
+}

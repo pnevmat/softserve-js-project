@@ -388,7 +388,7 @@ export function productsPage(page, baseUrlFolder) {
   );
 
   return `
-	${header(page)}
+	${header(page, baseUrlFolder)}
 		<section class="products">
         <div class="products_sort_goup_container">
           <div class="products_sort_title_container">
