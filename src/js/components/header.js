@@ -94,10 +94,15 @@ export function header(page, baseUrlFolder) {
 				<button class="header_search_submit"></button>
 			</div>
 			<div class="header_search_sale_container">
-				<a class="header_search_sale_link">
+				<a
+					class="header_search_sale_link"
+					href="${
+            baseUrlFolder ? `/` + baseUrlFolder : ''
+          }/products/?category=shoes&subcategory=women&subsubcategory=heels&price=30.99"
+				>
 					<p>
 						<span>Heels on Sale </span>
-						<span class="header_search_sale_link_text">$49.99 or Less! </span>
+						<span class="header_search_sale_link_text">$30.99 or Less! </span>
 					</p>
 					<span class="header_search_sale_link_text-underlined">
 						Shop Heels on Sale
