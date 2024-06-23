@@ -165,6 +165,7 @@
 }
 
 .products_list_active_filters_list {
+  min-height: 45px;
   margin-right: 10px;
   margin-left: 10px;
 }
@@ -215,11 +216,12 @@
   color: #1f1f1f;
   font-weight: 400;
   font-size: 16px;
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .products_list_active_filters_btn:hover {
   color: #707070;
+  text-decoration: underline !important;
   cursor: pointer;
 }
 

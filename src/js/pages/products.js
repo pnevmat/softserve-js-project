@@ -13,7 +13,7 @@ export function productsPage(page, baseUrlFolder) {
     const splitedCategory = category.split('=');
     return { [splitedCategory[0]]: splitedCategory[1] };
   });
-
+  console.log('Categories arr: ', categoriesArr);
   const titleCategoriesArr = categoriesArr.filter(
     category =>
       Object.keys(category).includes('category') ||
@@ -22,12 +22,12 @@ export function productsPage(page, baseUrlFolder) {
   const title = getTitle(titleCategoriesArr);
 
   const activeFiltersArr = categoriesArr.filter(
-    cat => Object.keys(cat)[0] !== 'sort',
+    cat => Object.keys(cat)[0] && Object.keys(cat)[0] !== 'sort',
   );
   const activeFiltersLayout = activeFiltersArr.map(category => {
     return activeFilter(page, categoriesArr, category, baseUrlFolder);
   });
-
+  console.log('Active filters arr: ', activeFiltersArr);
   const filtersArr = [
     {
       name: 'category',
@@ -392,7 +392,9 @@ export function productsPage(page, baseUrlFolder) {
 		<section class="products">
         <div class="products_sort_goup_container">
           <div class="products_sort_title_container">
-            <h1 class="products_sort_title">${title.join(' ')}</h1>
+            <h1 class="products_sort_title">${
+              title.length ? title.join(' ') : 'your search results'
+            }</h1>
             <p class="products_sort_found">
 							<span>
 								(${filteredProducts.length})
@@ -426,9 +428,12 @@ export function productsPage(page, baseUrlFolder) {
                   ${activeFiltersLayout.join('')}
                 </ul>
               </div>
-              <button class="products_list_active_filters_btn">
+              <a
+								class="products_list_active_filters_btn"
+								href="${baseUrlFolder ? `/` + baseUrlFolder : '/'}products"
+							>
 								Clear all filters
-							</button>
+							</a>
             </div>
             <ul class="products_list">
 							${filteredProducts.map(product => productCard(product)).join('')}
