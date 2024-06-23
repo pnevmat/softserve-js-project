@@ -9,7 +9,9 @@ export function getLinkPath(
   const key = Object.keys(category)[0];
   let link = ``;
   if (action === 'remove') {
-    const filteredArr = categoriesArr.filter(cat => cat[key] !== category[key]);
+    const filteredArr = categoriesArr.filter(
+      cat => Object.keys(cat)[0] !== '' && cat[key] !== category[key],
+    );
     link = `${baseUrlFolder ? `/` + baseUrlFolder : ''}/${page}/?${filteredArr
       .map(cat => `${Object.keys(cat)}=${Object.values(cat)}`)
       .join('&')}`;
@@ -33,6 +35,7 @@ export function getLinkPath(
     const rootLink = `${
       baseUrlFolder ? `/` + baseUrlFolder : ''
     }/${page}/?${filteredCategories
+      .filter(cat => Object.keys(cat)[0] !== '')
       .map(cat => `${Object.keys(cat)}=${Object.values(cat)}`)
       .join('&')}`;
 
