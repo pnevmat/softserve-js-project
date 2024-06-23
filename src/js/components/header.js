@@ -90,6 +90,7 @@ export function header(page, baseUrlFolder) {
 					class="header_search_input"
 					type="text"
 					placeholder="Search 6pm"
+					id="search"
 				/>
 				<button class="header_search_submit"></button>
 			</div>
