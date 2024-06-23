@@ -28,15 +28,7 @@ export function getFilteredProducts(products, filters) {
       ) {
         maches.push(true);
       }
-      console.log('produt obj values: ', Object.values(product));
-      console.log('Filters value: ', filters[key]);
-      console.log(
-        'Found product: ',
-        Object.values(product).find(
-          value =>
-            value.toString().toLowerCase() === filters[key].toLowerCase(),
-        ),
-      );
+
       if (
         (isNaN(Number(filters[key])) && filters[key] === product[key]) ||
         (isNaN(Number(filters[key])) &&
