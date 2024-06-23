@@ -66,7 +66,7 @@ export function header(page, baseUrlFolder) {
 							class="header_nav_popup_ctegory_link"
 							href="${
                 baseUrlFolder ? `/` + baseUrlFolder : ''
-              }/products?category=shoes&subcategory=women&subsubcategory=sandals"
+              }/products/?category=shoes&subcategory=women&subsubcategory=sandals"
 						>
 							Sandals
 						</a>
@@ -74,7 +74,7 @@ export function header(page, baseUrlFolder) {
 							class="header_nav_popup_ctegory_link"
 							href="${
                 baseUrlFolder ? `/` + baseUrlFolder : ''
-              }/products?category=shoes&subcategory=women&subsubcategory=heels"
+              }/products/?category=shoes&subcategory=women&subsubcategory=heels"
 						>
 							Heels
 						</a>

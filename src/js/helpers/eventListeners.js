@@ -13,7 +13,8 @@ productsSort.addEventListener('change', e => {
         .filter(param => !param.includes('sort'))
         .join('&') +
       `&sort=${value}`
-    : `?` + prevLink + `&sort=${value}`;
-
+    : `?` + prevLink.split('?')[1] + `&sort=${value}`;
+  console.log('Prev link: ', prevLink);
+  console.log('Link with sort: ', link);
   window.location.search = link;
 });
