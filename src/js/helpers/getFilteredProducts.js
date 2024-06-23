@@ -15,14 +15,27 @@ export function getFilteredProducts(products, filters) {
   // pattern
   // theme
   // accent
+  const filtersKeysArr = Object.keys(filters);
+
   const filteredProducts = products.filter(product => {
-    const filtersArr = Object.values(filters);
-    const productArr = Object.values(product);
+    const maches = [];
 
-    const combinedArr = [...filtersArr, ...productArr];
-    const productCollection = new Set(combinedArr);
+    filtersKeysArr.forEach(key => {
+      if (
+        !isNaN(Number(filters[key])) &&
+        ((key === 'size' && Number(filters[key]) === Number(product[key])) ||
+          (key === 'price' && Number(filters[key]) >= Number(product[key])))
+      ) {
+        maches.push(true);
+      }
 
-    if (productCollection.size === productArr.length) return product;
+      if (isNaN(Number(filters[key])) && filters[key] === product[key]) {
+        maches.push(true);
+      }
+    });
+
+    if (maches.length === filtersKeysArr.length) return product;
   });
+
   return filteredProducts;
 }

@@ -19,9 +19,20 @@ export function getLinkPath(
 
   if (action === 'add') {
     const { name, options } = category;
+    const filteredCategories = categoriesArr.filter(category => {
+      if (
+        Object.keys(category)[0] !== name.split(' ')[1] &&
+        Object.keys(category)[0] !==
+          [...name].splice(0, name.length - 1).join('') &&
+        Object.keys(category)[0] !== name
+      ) {
+        return category;
+      }
+    });
+
     const rootLink = `${
       baseUrlFolder ? `/` + baseUrlFolder : ''
-    }/${page}/?${categoriesArr
+    }/${page}/?${filteredCategories
       .map(cat => `${Object.keys(cat)}=${Object.values(cat)}`)
       .join('&')}`;
 

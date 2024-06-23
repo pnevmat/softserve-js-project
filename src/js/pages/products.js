@@ -21,11 +21,12 @@ export function productsPage(page, baseUrlFolder) {
   );
   const title = getTitle(titleCategoriesArr);
 
-  const activeFiltersLayout = categoriesArr
-    .filter(cat => Object.keys(cat)[0] !== 'sort')
-    .map(category => {
-      return activeFilter(page, categoriesArr, category, baseUrlFolder);
-    });
+  const activeFiltersArr = categoriesArr.filter(
+    cat => Object.keys(cat)[0] !== 'sort',
+  );
+  const activeFiltersLayout = activeFiltersArr.map(category => {
+    return activeFilter(page, categoriesArr, category, baseUrlFolder);
+  });
 
   const filtersArr = [
     {
@@ -135,6 +136,7 @@ export function productsPage(page, baseUrlFolder) {
       ],
     },
   ];
+
   const filters = filtersArr
     .map(option => leftFilter(option, page, categoriesArr, baseUrlFolder))
     .join('');
