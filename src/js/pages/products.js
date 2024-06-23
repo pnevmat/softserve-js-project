@@ -13,7 +13,7 @@ export function productsPage(page, baseUrlFolder) {
     const splitedCategory = category.split('=');
     return { [splitedCategory[0]]: splitedCategory[1] };
   });
-  console.log('Categories arr: ', categoriesArr);
+
   const titleCategoriesArr = categoriesArr.filter(
     category =>
       Object.keys(category).includes('category') ||
@@ -27,7 +27,7 @@ export function productsPage(page, baseUrlFolder) {
   const activeFiltersLayout = activeFiltersArr.map(category => {
     return activeFilter(page, categoriesArr, category, baseUrlFolder);
   });
-  console.log('Active filters arr: ', activeFiltersArr);
+
   const filtersArr = [
     {
       name: 'category',

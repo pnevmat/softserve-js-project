@@ -32,7 +32,6 @@ search.addEventListener('change', e => {
         .join('&') +
       `&search=${value}`
     : `?` + prevLink.split('?')[1] + `&search=${value}`;
-  console.log('Prev link: ', prevLink);
-  console.log('Link with search: ', link);
+
   window.location.search = link;
 });
