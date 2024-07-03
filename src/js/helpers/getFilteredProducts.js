@@ -24,7 +24,8 @@ export function getFilteredProducts(products, filters) {
       if (
         !isNaN(Number(filters[key])) &&
         ((key === 'size' && Number(filters[key]) === Number(product[key])) ||
-          (key === 'price' && Number(filters[key]) >= Number(product[key])))
+          (key === 'price' && Number(filters[key]) >= Number(product[key])) ||
+          (key === 'id' && Number(filters[key]) === Number(product[key])))
       ) {
         maches.push(true);
       }

@@ -14,6 +14,11 @@ const pathsObj = {
     'logo1x.png': '../src/images/logo1x.png',
     'logo2x.png': '../src/images/logo2x.png',
   },
+  product: {
+    'icons-sprite1x.png': '../src/images/icons-sprite1x.png',
+    'logo1x.png': '../src/images/logo1x.png',
+    'logo2x.png': '../src/images/logo2x.png',
+  },
 };
 
 export function getImgPath(page, imgName, type) {

@@ -1,6 +1,7 @@
 import { homePage } from './src/js/pages/home.js';
 import { shippingAndDeliveryQuestionsPage } from './src/js/pages/shippingAndDeliveryQuestions.js';
 import { productsPage } from './src/js/pages/products.js';
+import { productPage } from './src/js/pages/product.js';
 
 const router = () => {
   const location = window.location.pathname;
@@ -24,6 +25,9 @@ const router = () => {
       break;
     case 'products':
       root.innerHTML = productsPage(page, baseUrlFolder);
+      break;
+    case 'product':
+      root.innerHTML = productPage(page, baseUrlFolder);
       break;
 
     default:
