@@ -1,7 +1,7 @@
 import { header } from '../components/header.js';
 import { footer } from '../components/footer.js';
 
-export function shippingAndDeliveryQuestionsPage(page, baseUrlFolder) {
+export function shippingAndDeliveryQuestionsPage({ page, baseUrlFolder }) {
   return `
 		${header(page, baseUrlFolder)}
 		<section class="shipping_questions">

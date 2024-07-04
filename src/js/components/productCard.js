@@ -1,14 +1,15 @@
 export function productCard(product, baseUrlFolder) {
   return `
 		<li class="products_list_product_card">
+			<div class="products_list_product_card_btn_wrapper">
+				<button id="${product.id}" class="products_list_product_card_btn">
+				</button>
+			</div>
 			<a
 				class="products_list_product_card_link"
 				href="${baseUrlFolder ? `/` + baseUrlFolder : '/'}product/?id=${product.id}"
 			>
-				<div class="products_list_product_card_img_container">
-					<div class="products_list_product_card_btn_wrapper">
-						<button class="products_list_product_card_btn"></button>
-					</div>
+				<div>
 					<div>
 						<img class="products_list_product_card_img" src="${product.img}" />
 					</div>

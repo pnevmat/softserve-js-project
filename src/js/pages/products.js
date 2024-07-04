@@ -8,7 +8,7 @@ import { getFilteredProducts } from '../helpers/getFilteredProducts.js';
 import { productsArr } from '../helpers/productsArr.js';
 import { getFilters } from '../helpers/getFilters.js';
 
-export function productsPage(page, baseUrlFolder) {
+export function productsPage({ page, baseUrlFolder }) {
   const searchParams = window.location.search.split('?').join('');
   const categoriesArr = searchParams.split('&').map(category => {
     const splitedCategory = category.split('=');
@@ -211,7 +211,7 @@ export function productsPage(page, baseUrlFolder) {
 								Clear all filters
 							</a>
             </div>
-            <ul class="products_list">
+            <ul id="products-list" class="products_list">
 							${filteredProducts.map(product => productCard(product, baseUrlFolder)).join('')}
 						</ul>
           </div>

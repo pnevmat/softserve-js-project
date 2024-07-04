@@ -1,23 +1,76 @@
-const productsSort = document.getElementById('products-sort');
+import { getLocation } from './getLocation.js';
+import { productsArr } from './productsArr.js';
+
+const { page } = getLocation();
 const search = document.getElementById('search');
 
-productsSort.addEventListener('change', e => {
-  e.preventDefault();
-  const value = e.target.value;
-  const prevLink = window.location.href;
+if (page === 'products') {
+  const productsSort = document.getElementById('products-sort');
+  const productsList = document.getElementById('products-list');
 
-  const link = prevLink.includes('sort')
-    ? `?` +
-      prevLink
-        .split('?')[1]
-        .split('&')
-        .filter(param => !param.includes('sort'))
-        .join('&') +
-      `&sort=${value}`
-    : `?` + prevLink.split('?')[1] + `&sort=${value}`;
+  productsSort.addEventListener('change', e => {
+    e.preventDefault();
+    const value = e.target.value;
+    const prevLink = window.location.href;
 
-  window.location.search = link;
-});
+    const link = prevLink.includes('sort')
+      ? `?` +
+        prevLink
+          .split('?')[1]
+          .split('&')
+          .filter(param => !param.includes('sort'))
+          .join('&') +
+        `&sort=${value}`
+      : `?` + prevLink.split('?')[1] + `&sort=${value}`;
+
+    window.location.search = link;
+  });
+
+  [...productsList.children].forEach(child => {
+    const button = child.children[0].children[0];
+
+    button.addEventListener('click', e => {
+      e.preventDefault();
+
+      const product = productsArr.find(product => product.id === button.id);
+      const favoriteProducts = localStorage.getItem('favorites');
+
+      if (favoriteProducts) {
+        const newFavoritesArr = [...JSON.parse(favoriteProducts), product];
+        localStorage.setItem('favorites', JSON.stringify(newFavoritesArr));
+      } else {
+        localStorage.setItem('favorites', JSON.stringify([product]));
+      }
+    });
+  });
+}
+
+if (page === 'favorites') {
+  const favoritesList = document.getElementById('favorites-list');
+
+  if (favoritesList) {
+    [...favoritesList.children].forEach(child => {
+      const button = child.children[1].children[0];
+
+      button.addEventListener('click', e => {
+        e.preventDefault();
+
+        const favorites = localStorage.getItem('favorites');
+
+        if (favorites) {
+          const favoritesArr = JSON.parse(favorites);
+
+          const newFavoritesArr = favoritesArr.filter(
+            favorite => favorite.id !== button.id,
+          );
+
+          localStorage.setItem('favorites', JSON.stringify(newFavoritesArr));
+          location.reload();
+        }
+      });
+    });
+  }
+}
 
 search.addEventListener('change', e => {
   const value = e.target.value;

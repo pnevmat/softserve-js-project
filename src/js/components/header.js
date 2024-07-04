@@ -41,7 +41,11 @@ export function header(page, baseUrlFolder) {
 				<a class="header_tool_link admin"></a>
 			</div>
 			<div class="header_tool_wrapper">
-				<a class="header_tool_link favorite"></a>
+				<a
+					class="header_tool_link favorite"
+					href="${baseUrlFolder ? `/` + baseUrlFolder : ''}/favorites"
+				>
+				</a>
 			</div>
 			<div class="header_tool_wrapper">
 				<a class="header_tool_link cart"></a>

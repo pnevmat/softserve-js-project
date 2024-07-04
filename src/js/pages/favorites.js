@@ -1,8 +1,12 @@
 import { header } from '../components/header.js';
 import { footer } from '../components/footer.js';
+import { fvoritesProductCard } from '../components/fvoritesProductCard.js';
 
-export function favoritesPage(page, baseUrlFolder) {
-  const products = [];
+export function favoritesPage({ page, baseUrlFolder }) {
+  const products = localStorage.getItem('favorites')
+    ? JSON.parse(localStorage.getItem('favorites'))
+    : [];
+
   return `
 		${header(page, baseUrlFolder)}
 		<section class="favorites">
@@ -12,8 +16,8 @@ export function favoritesPage(page, baseUrlFolder) {
 			</div>
 			${
         products.length > 0
-          ? `<ul class="favorites_products_list">
-						${products.map(product => product)}
+          ? `<ul id="favorites-list" class="favorites_products_list">
+						${products.map(product => fvoritesProductCard(product)).join('')}
 					</ul>`
           : `<div class="favorites_empty_list_container">
 						<p>This list needs some love.</p>

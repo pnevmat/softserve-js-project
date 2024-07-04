@@ -232,14 +232,11 @@
 }
 
 .products_list_product_card {
+  position: relative;
   width: calc(25% - 12px);
   margin: 4px;
   border: 1px solid #ddd;
   border-radius: 8px;
-}
-
-.products_list_product_card_img_container {
-  position: relative;
 }
 
 .products_list_product_card_btn_wrapper {

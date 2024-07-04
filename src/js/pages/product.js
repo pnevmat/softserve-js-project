@@ -6,7 +6,7 @@ import { productsArr } from '../helpers/productsArr.js';
 import { getFilteredProducts } from '../helpers/getFilteredProducts.js';
 import { getFilters } from '../helpers/getFilters.js';
 
-export function productPage(page, baseUrlFolder) {
+export function productPage({ page, baseUrlFolder }) {
   const searchParams = window.location.search.split('?').join('');
   const product = getFilteredProducts(productsArr, getFilters(searchParams))[0];
   console.log('Product: ', product);
