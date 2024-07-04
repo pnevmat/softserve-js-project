@@ -1,0 +1,29 @@
+import { header } from '../components/header.js';
+import { footer } from '../components/footer.js';
+
+export function favoritesPage(page, baseUrlFolder) {
+  const products = [];
+  return `
+		${header(page, baseUrlFolder)}
+		<section class="favorites">
+			<div class="favorites_nav_container"></div>
+			<div class="favorites_title_container">
+				<h1 class="favorites_title">Favorites</h1>
+			</div>
+			${
+        products.length > 0
+          ? `<ul class="favorites_products_list">
+						${products.map(product => product)}
+					</ul>`
+          : `<div class="favorites_empty_list_container">
+						<p>This list needs some love.</p>
+						<p>
+							<span class="favorites_empty_list_icon"></span>
+							<span> Add products you'd like to.</span>
+						</p>
+					</div>`
+      }
+		</section>
+		${footer()}
+	`;
+}
