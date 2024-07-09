@@ -261,6 +261,10 @@
   background-color: #ddd;
 }
 
+.products_list_product_card_btn.active {
+  background-position: -31px -140px;
+}
+
 .products_list_product_card_btn:hover {
   cursor: pointer;
 }

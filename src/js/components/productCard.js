@@ -1,8 +1,11 @@
-export function productCard(product, baseUrlFolder) {
+export function productCard(product, baseUrlFolder, active) {
   return `
 		<li class="products_list_product_card">
 			<div class="products_list_product_card_btn_wrapper">
-				<button id="${product.id}" class="products_list_product_card_btn">
+				<button
+					id="${product.id}"
+					class="products_list_product_card_btn ${active ? 'active' : ''}"
+				>
 				</button>
 			</div>
 			<a

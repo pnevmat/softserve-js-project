@@ -33,10 +33,22 @@ if (page === 'products') {
       e.preventDefault();
 
       const product = productsArr.find(product => product.id === button.id);
-      const favoriteProducts = localStorage.getItem('favorites');
+      const favoriteProducts = JSON.parse(localStorage.getItem('favorites'));
 
       if (favoriteProducts) {
-        const newFavoritesArr = [...JSON.parse(favoriteProducts), product];
+        const filteredProducts = favoriteProducts.filter(
+          p => p.id !== product.id,
+        );
+
+        let newFavoritesArr = [];
+        if (favoriteProducts.length > filteredProducts.length) {
+          newFavoritesArr = [...filteredProducts];
+          button.classList.remove('active');
+        } else {
+          newFavoritesArr = [...filteredProducts, product];
+          button.classList.add('active');
+        }
+
         localStorage.setItem('favorites', JSON.stringify(newFavoritesArr));
       } else {
         localStorage.setItem('favorites', JSON.stringify([product]));
@@ -70,6 +82,39 @@ if (page === 'favorites') {
       });
     });
   }
+}
+
+if (page === 'product') {
+  const button = document.getElementsByClassName(
+    'product_images_favorite_container',
+  )[0];
+
+  button.addEventListener('click', () => {
+    const product = productsArr.find(product => product.id === button.id);
+    const favorites = JSON.parse(localStorage.getItem('favorites'));
+    const activeImg = document.getElementsByClassName(
+      'product_images_favorite_img',
+    )[0];
+
+    if (favorites) {
+      const filteredFavorites = favorites.filter(
+        favorite => favorite.id !== product.id,
+      );
+
+      let newFavoritesArr = [];
+      if (favorites.length > filteredFavorites.length) {
+        newFavoritesArr = [...filteredFavorites];
+        activeImg.classList.remove('active');
+      } else {
+        newFavoritesArr = [...filteredFavorites, product];
+        activeImg.classList.add('active');
+      }
+
+      localStorage.setItem('favorites', JSON.stringify(newFavoritesArr));
+    } else {
+      localStorage.setItem('favorites', JSON.stringify([product]));
+    }
+  });
 }
 
 search.addEventListener('change', e => {

@@ -42,6 +42,11 @@
   background-color: #ffffff;
 }
 
+.favorites_product_card > a {
+  display: block;
+  text-decoration: none;
+}
+
 .favorites_product_card_img_container > img {
   width: 100%;
   max-width: 100%;

@@ -57,6 +57,10 @@
   background-position: -751px 0px;
 }
 
+.product_images_favorite_img.active {
+  background-position: -827px 0px;
+}
+
 .product_images_list {
   display: flex;
   flex-direction: column;

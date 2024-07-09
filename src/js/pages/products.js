@@ -163,6 +163,8 @@ export function productsPage({ page, baseUrlFolder }) {
     }
   });
 
+  const favorites = JSON.parse(localStorage.getItem('favorites'));
+
   return `
 	${header(page, baseUrlFolder)}
 		<section class="products">
@@ -212,7 +214,14 @@ export function productsPage({ page, baseUrlFolder }) {
 							</a>
             </div>
             <ul id="products-list" class="products_list">
-							${filteredProducts.map(product => productCard(product, baseUrlFolder)).join('')}
+							${filteredProducts
+                .map(product => {
+                  const active = favorites.find(
+                    favorite => favorite.id === product.id,
+                  );
+                  return productCard(product, baseUrlFolder, active);
+                })
+                .join('')}
 						</ul>
           </div>
         </div>

@@ -17,7 +17,7 @@ export function favoritesPage({ page, baseUrlFolder }) {
 			${
         products.length > 0
           ? `<ul id="favorites-list" class="favorites_products_list">
-						${products.map(product => fvoritesProductCard(product)).join('')}
+						${products.map(product => fvoritesProductCard(product, baseUrlFolder)).join('')}
 					</ul>`
           : `<div class="favorites_empty_list_container">
 						<p>This list needs some love.</p>

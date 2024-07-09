@@ -9,15 +9,21 @@ import { getFilters } from '../helpers/getFilters.js';
 export function productPage({ page, baseUrlFolder }) {
   const searchParams = window.location.search.split('?').join('');
   const product = getFilteredProducts(productsArr, getFilters(searchParams))[0];
-  console.log('Product: ', product);
+
+  const favorites = JSON.parse(localStorage.getItem('favorites'));
+  const active = favorites.find(favorite => favorite.id === product.id);
+
   return `
-		${header(page)}
+		${header(page, baseUrlFolder)}
 		<section class="product">
 			<ul class="product_nav"></ul>
 			<div class="product_container">
 				<div class="product_images_container">
-					<div class="product_images_favorite_container">
-						<div class="product_images_favorite_img"></div>
+					<div id="${product.id}" class="product_images_favorite_container">
+						<div
+							class="product_images_favorite_img ${active ? 'active' : ''}"
+						>
+						</div>
 					</div>
 					<ul class="product_images_list">
 						<li class="product_images_list_item-first">
