@@ -4,6 +4,7 @@ import { productsPage } from './src/js/pages/products.js';
 import { productPage } from './src/js/pages/product.js';
 import { favoritesPage } from './src/js/pages/favorites.js';
 import { getLocation } from './src/js/helpers/getLocation.js';
+import { shoppingCart } from './src/js/pages/shoppingCart.js';
 
 const router = () => {
   const location = getLocation();
@@ -26,7 +27,9 @@ const router = () => {
     case 'favorites':
       root.innerHTML = favoritesPage(location);
       break;
-
+    case 'shopping-cart':
+      root.innerHTML = shoppingCart(location);
+      break;
     default:
       break;
   }

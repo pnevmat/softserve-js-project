@@ -6,6 +6,7 @@ export const productsArr = [
     name: 'Crater-G',
     brand: 'NASA',
     price: 8.99,
+    inStock: 3,
     img: getImgPath('products', 'carterG.jpg', 'product'),
     imgSet: [
       getImgPath('products', 'carterG1.jpg', 'product'),
@@ -50,6 +51,7 @@ export const productsArr = [
     name: 'Wed',
     brand: 'David Tate',
     price: 25,
+    inStock: 5,
     img: getImgPath('products', 'wed.jpg', 'product'),
     imgSet: [
       getImgPath('products', 'wed1.jpg', 'product'),
@@ -95,6 +97,7 @@ export const productsArr = [
     name: 'Asteroid-G (Little Kid)',
     brand: 'NASA',
     price: 30,
+    inStock: 7,
     img: getImgPath('products', 'asteroidG.jpg', 'product'),
     imgSet: [
       getImgPath('products', 'asteroidG1.jpg', 'product'),
@@ -143,6 +146,7 @@ export const productsArr = [
     name: 'Rover',
     brand: 'La Canadienne',
     price: 35,
+    inStock: 6,
     img: getImgPath('products', 'rover.jpg', 'product'),
     imgSet: [
       getImgPath('products', 'rover1.jpg', 'product'),
@@ -188,6 +192,7 @@ export const productsArr = [
     name: 'MX Flipsider',
     brand: 'ECCO Sport',
     price: 10,
+    inStock: 10,
     img: getImgPath('products', 'mxFlipsider.jpg', 'product'),
     imgSet: [
       getImgPath('products', 'mxFlipsider1.jpg', 'product'),
@@ -237,6 +242,7 @@ export const productsArr = [
     name: 'Dalian',
     brand: 'Vaneli',
     price: 15,
+    inStock: 18,
     img: getImgPath('products', 'dalian.jpg', 'product'),
     imgSet: [
       getImgPath('products', 'dalian1.jpg', 'product'),
@@ -277,6 +283,7 @@ export const productsArr = [
     name: 'Nelina',
     brand: 'Vaneli',
     price: 35,
+    inStock: 2,
     img: getImgPath('products', 'nelina.jpg', 'product'),
     imgSet: [
       getImgPath('products', 'nelina1.jpg', 'product'),
@@ -318,6 +325,7 @@ export const productsArr = [
     name: 'Shandra',
     brand: 'Easy Spirit',
     price: 28,
+    inStock: 15,
     img: getImgPath('products', 'shandra.jpg', 'product'),
     imgSet: [
       getImgPath('products', 'shandra1.jpg', 'product'),

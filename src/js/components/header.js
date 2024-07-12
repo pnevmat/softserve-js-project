@@ -48,7 +48,11 @@ export function header(page, baseUrlFolder) {
 				</a>
 			</div>
 			<div class="header_tool_wrapper">
-				<a class="header_tool_link cart"></a>
+				<a
+					class="header_tool_link cart"
+					href="${baseUrlFolder ? `/` + baseUrlFolder : ''}/shopping-cart"
+				>
+				</a>
 			</div>
 		</div>
 	</div>

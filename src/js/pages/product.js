@@ -87,8 +87,11 @@ export function productPage({ page, baseUrlFolder }) {
 								</ul>
 							</div>
 							<div class="product_description_add_to_cart_btn_container">
-								<button class="product_description_add_to_cart_btn">
-									Add to Shopping Bag
+								<button
+									id="${product.id}"
+									class="product_description_add_to_cart_btn"
+								>
+									Add to Shopping Cart
 								</button>
 							</div>
 						</div>
