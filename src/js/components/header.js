@@ -38,7 +38,11 @@ export function header(page, baseUrlFolder) {
 		</div>
 		<div class="header_tools_container">
 			<div class="header_tool_wrapper">
-				<a class="header_tool_link admin"></a>
+				<a
+					class="header_tool_link admin"
+					href="${baseUrlFolder ? `/` + baseUrlFolder : ''}/admin-area"
+				>
+				</a>
 			</div>
 			<div class="header_tool_wrapper">
 				<a

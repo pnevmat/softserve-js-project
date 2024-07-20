@@ -19,8 +19,8 @@ export const productsArr = [
     category: 'shoes',
     subcategory: 'women',
     subsubcategory: 'sandals',
-    size: 1,
-    width: 'm',
+    size: [{ size: '1' }],
+    width: [{ width: 'm' }],
     color: [
       {
         color: 'white',
@@ -63,8 +63,8 @@ export const productsArr = [
     category: 'shoes',
     subcategory: 'women',
     subsubcategory: 'heels',
-    size: 1.5,
-    width: 'n',
+    size: [{ size: '1.5' }],
+    width: [{ width: 'n' }],
     color: [
       {
         color: 'black',
@@ -110,8 +110,8 @@ export const productsArr = [
     category: 'shoes',
     subcategory: 'women',
     subsubcategory: 'sandals',
-    size: 2,
-    width: 'm',
+    size: [{ size: '2' }],
+    width: [{ width: 'm' }],
     color: [
       {
         color: 'black',
@@ -158,8 +158,8 @@ export const productsArr = [
     category: 'shoes',
     subcategory: 'women',
     subsubcategory: 'heels',
-    size: 3,
-    width: 'm',
+    size: [{ size: '3' }],
+    width: [{ width: 'm' }],
     color: [
       {
         color: 'white',
@@ -204,8 +204,8 @@ export const productsArr = [
     category: 'shoes',
     subcategory: 'women',
     subsubcategory: 'sandals',
-    size: 3,
-    width: 'm',
+    size: [{ size: '3' }],
+    width: [{ width: 'm' }],
     color: [
       {
         color: 'vetiver',
@@ -255,8 +255,8 @@ export const productsArr = [
     category: 'shoes',
     subcategory: 'women',
     subsubcategory: 'heels',
-    size: 1.5,
-    width: 'n',
+    size: [{ size: '1.5' }],
+    width: [{ width: 'n' }],
     color: [
       {
         color: 'black',
@@ -295,8 +295,8 @@ export const productsArr = [
     category: 'shoes',
     subcategory: 'women',
     subsubcategory: 'sandals',
-    size: 2,
-    width: 'n',
+    size: [{ size: '2' }],
+    width: [{ width: 'n' }],
     color: [
       {
         color: 'white',
@@ -337,8 +337,8 @@ export const productsArr = [
     category: 'shoes',
     subcategory: 'women',
     subsubcategory: 'heels',
-    size: 3,
-    width: 'm',
+    size: [{ size: '3' }],
+    width: [{ width: 'm' }],
     color: [
       {
         color: 'beige',

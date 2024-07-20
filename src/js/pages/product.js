@@ -71,9 +71,15 @@ export function productPage({ page, baseUrlFolder }) {
 									<span>sizes:</span>
 								</p>
 								<ul class="product_description_size_filters_list">
-									<li class="product_description_size_filters_item">
-										<span>${product.size}</span>
-									</li>
+									${product.size
+                    .map(
+                      size => `
+											<li class="product_description_size_filters_item">
+												<span>${size.size}</span>
+											</li>
+										`,
+                    )
+                    .join('')}
 								</ul>
 							</div>
 							<div>
@@ -81,9 +87,15 @@ export function productPage({ page, baseUrlFolder }) {
 									width options:
 								</p>
 								<ul class="product_description_width_filters_list">
-									<li class="product_description_width_filters_item">
-										<span>${product.width}</span>
-									</li>
+									${product.width
+                    .map(
+                      width => `
+											<li class="product_description_width_filters_item">
+												<span>${width.width}</span>
+											</li>
+										`,
+                    )
+                    .join('')}
 								</ul>
 							</div>
 							<div class="product_description_add_to_cart_btn_container">

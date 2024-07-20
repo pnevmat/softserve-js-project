@@ -57,6 +57,461 @@ if (page === 'products') {
   });
 }
 
+if (page === 'admin-area') {
+  const addCategoryBtn = document.getElementsByClassName(
+    'admin_area_add_category_btn',
+  )[0];
+  const saveCategoryBtn = document.getElementsByClassName(
+    'admin_area_save_category_btn',
+  )[0];
+  const addSubcategoryBtns = [
+    ...document.getElementsByClassName('admin_area_add_subcategory_btn'),
+  ];
+  const saveSubcategoryBtns = [
+    ...document.getElementsByClassName('admin_area_save_subcategory_btn'),
+  ];
+  const addSubsubcategoryBtns = [
+    ...document.getElementsByClassName('admin_area_add_subsubcategory_btn'),
+  ];
+  const saveSubsubcategoryBtns = [
+    ...document.getElementsByClassName('admin_area_save_subsubcategory_btn'),
+  ];
+  const categoriesNavBtn = document.getElementById('categories');
+  const productsNavBtn = document.getElementById('products');
+  const addProductBtn = document.getElementsByClassName(
+    'admin_area_add_product_btn',
+  )[0];
+  const saveProductBtn = document.getElementsByClassName(
+    'admin_area_save_product_btn',
+  )[0];
+  const addProductColorBtn = document.getElementsByClassName(
+    'admin_area_add_product_color_btn',
+  )[0];
+  const saveProductColorBtn = document.getElementsByClassName(
+    'admin_area_save_product_color_btn',
+  )[0];
+  const addProductSizeBtn = document.getElementsByClassName(
+    'admin_area_add_product_size_btn',
+  )[0];
+  const saveProductSizeBtn = document.getElementsByClassName(
+    'admin_area_save_product_size_btn',
+  )[0];
+  const addProductWidthBtn = document.getElementsByClassName(
+    'admin_area_add_product_width_btn',
+  )[0];
+  const saveProductWidthBtn = document.getElementsByClassName(
+    'admin_area_save_product_width_btn',
+  )[0];
+  const addProductDescriptionBulletBtn = document.getElementsByClassName(
+    'admin_area_add_product_description_bullet__btn',
+  )[0];
+  const saveProductDescriptionBulletBtn = document.getElementsByClassName(
+    'admin_area_save_product_description_bullet__btn',
+  )[0];
+
+  categoriesNavBtn.addEventListener('click', () => {
+    let activeTab = 'categories';
+    localStorage.setItem('activeTab', activeTab);
+    localStorage.setItem('editProduct', JSON.stringify(''));
+    location.reload();
+  });
+
+  productsNavBtn.addEventListener('click', () => {
+    let activeTab = 'products';
+    localStorage.setItem('activeTab', activeTab);
+    location.reload();
+  });
+
+  if (addCategoryBtn) {
+    addCategoryBtn.addEventListener('click', () => {
+      localStorage.setItem('saveCategory', JSON.stringify(true));
+      location.reload();
+    });
+  }
+
+  if (saveCategoryBtn) {
+    saveCategoryBtn.addEventListener('click', () => {
+      const saveCategoryInput = document.getElementsByClassName(
+        'admin_area_save_category_input',
+      )[0];
+
+      if (saveCategoryInput.value !== '') {
+        const categories = localStorage.getItem('categories');
+
+        let newCategoriesArr = [];
+        const newCategory = {
+          category: saveCategoryInput.value,
+          subcategories: [],
+        };
+
+        if (categories) {
+          newCategoriesArr = [...JSON.parse(categories), newCategory];
+          const lastIndex = newCategoriesArr.length - 1;
+          newCategoriesArr[lastIndex].id = lastIndex;
+        } else {
+          newCategory.id = 0;
+          newCategoriesArr = [newCategory];
+        }
+
+        localStorage.setItem('categories', JSON.stringify(newCategoriesArr));
+        localStorage.setItem('saveCategory', JSON.stringify(false));
+        location.reload();
+      }
+    });
+  }
+
+  if (addSubcategoryBtns.length > 0) {
+    addSubcategoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const saveSubcategory = JSON.parse(
+          localStorage.getItem('saveSubcategory'),
+        );
+
+        saveSubcategory[btn.id] = true;
+        localStorage.setItem(
+          'saveSubcategory',
+          JSON.stringify(saveSubcategory),
+        );
+        location.reload();
+      });
+    });
+  }
+
+  if (saveSubcategoryBtns.length > 0) {
+    saveSubcategoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const saveSubcategoryInput = [
+          ...document.getElementsByClassName(
+            'admin_area_save_subcategory_input',
+          ),
+        ].find(input => input.id === btn.id);
+
+        const saveSubcategory = JSON.parse(
+          localStorage.getItem('saveSubcategory'),
+        );
+
+        if (saveSubcategoryInput.value !== '') {
+          const categories = JSON.parse(localStorage.getItem('categories'));
+          const newSubcategory = {
+            id: `${btn.id}`,
+            subcategory: saveSubcategoryInput.value,
+            subsubcategories: [],
+          };
+
+          const newCategoriesArr = categories.map(category => {
+            if (btn.id === `subcategory${category.id}`) {
+              category.subcategories = [
+                ...category.subcategories,
+                newSubcategory,
+              ];
+              return category;
+            }
+
+            return category;
+          });
+
+          localStorage.setItem('categories', JSON.stringify(newCategoriesArr));
+
+          saveSubcategory[`${btn.id}`] = false;
+          localStorage.setItem(
+            'saveSubcategory',
+            JSON.stringify(saveSubcategory),
+          );
+          location.reload();
+        }
+      });
+    });
+  }
+
+  if (addSubsubcategoryBtns.length > 0) {
+    addSubsubcategoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const saveSubsubcategory = JSON.parse(
+          localStorage.getItem('saveSubcategory'),
+        );
+
+        saveSubsubcategory[`${btn.id}`] = true;
+        localStorage.setItem(
+          'saveSubcategory',
+          JSON.stringify(saveSubsubcategory),
+        );
+        location.reload();
+      });
+    });
+  }
+
+  if (saveSubsubcategoryBtns.length > 0) {
+    saveSubsubcategoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const saveSubcategoryInput = [
+          ...document.getElementsByClassName(
+            'admin_area_save_subsubcategory_input',
+          ),
+        ].find(input => input.id === btn.id);
+
+        const saveSubsubcategory = JSON.parse(
+          localStorage.getItem('saveSubcategory'),
+        );
+
+        if (saveSubcategoryInput.value !== '') {
+          const categories = JSON.parse(localStorage.getItem('categories'));
+          const newSubsubcategory = {
+            id: `${btn.id}`,
+            subsubcategory: saveSubcategoryInput.value,
+          };
+
+          const newCategoriesArr = categories.map(category => {
+            category.subcategories.map(subcategory => {
+              if (btn.id === `sub${subcategory.id}`) {
+                subcategory.subsubcategories = [
+                  ...subcategory.subsubcategories,
+                  newSubsubcategory,
+                ];
+                return category;
+              }
+              return subcategory;
+            });
+            return category;
+          });
+
+          localStorage.setItem('categories', JSON.stringify(newCategoriesArr));
+
+          saveSubsubcategory[`${btn.id}`] = false;
+          localStorage.setItem(
+            'saveSubcategory',
+            JSON.stringify(saveSubsubcategory),
+          );
+          location.reload();
+        }
+      });
+    });
+  }
+
+  if (addProductBtn) {
+    addProductBtn.addEventListener('click', () => {
+      localStorage.setItem('editProduct', JSON.stringify('null'));
+      location.reload();
+    });
+  }
+
+  if (addProductColorBtn) {
+    addProductColorBtn.addEventListener('click', () => {
+      let saveProductOptions = JSON.parse(
+        localStorage.getItem('saveProductOptions'),
+      );
+
+      saveProductOptions.color = true;
+      localStorage.setItem(
+        'saveProductOptions',
+        JSON.stringify(saveProductOptions),
+      );
+      location.reload();
+    });
+  }
+
+  if (saveProductColorBtn) {
+    saveProductColorBtn.addEventListener('click', () => {
+      let saveProductOptions = JSON.parse(
+        localStorage.getItem('saveProductOptions'),
+      );
+      let tempProduct = JSON.parse(localStorage.getItem('tempProduct'));
+      const saveColorInput = document.getElementsByClassName(
+        'admin_area_save_product_color_input',
+      )[0];
+      const newColor = {
+        color: saveColorInput.value,
+        img: '',
+      };
+
+      if (tempProduct.color) {
+        tempProduct.color = [...tempProduct.color, newColor];
+      } else {
+        tempProduct.color = [newColor];
+      }
+
+      localStorage.setItem('tempProduct', JSON.stringify(tempProduct));
+      saveProductOptions.color = false;
+      localStorage.setItem(
+        'saveProductOptions',
+        JSON.stringify(saveProductOptions),
+      );
+      location.reload();
+    });
+  }
+
+  if (addProductSizeBtn) {
+    addProductSizeBtn.addEventListener('click', () => {
+      let saveProductOptions = JSON.parse(
+        localStorage.getItem('saveProductOptions'),
+      );
+
+      saveProductOptions.size = true;
+      localStorage.setItem(
+        'saveProductOptions',
+        JSON.stringify(saveProductOptions),
+      );
+      location.reload();
+    });
+  }
+
+  if (saveProductSizeBtn) {
+    saveProductSizeBtn.addEventListener('click', () => {
+      let saveProductOptions = JSON.parse(
+        localStorage.getItem('saveProductOptions'),
+      );
+      let tempProduct = JSON.parse(localStorage.getItem('tempProduct'));
+      const saveSizeInput = document.getElementsByClassName(
+        'admin_area_save_product_size_input',
+      )[0];
+      const newSize = {
+        size: saveSizeInput.value,
+      };
+
+      if (tempProduct.size) {
+        tempProduct.size = [...tempProduct.size, newSize];
+      } else {
+        tempProduct.size = [newSize];
+      }
+
+      localStorage.setItem('tempProduct', JSON.stringify(tempProduct));
+      saveProductOptions.size = false;
+      localStorage.setItem(
+        'saveProductOptions',
+        JSON.stringify(saveProductOptions),
+      );
+      location.reload();
+    });
+  }
+
+  if (addProductWidthBtn) {
+    addProductWidthBtn.addEventListener('click', () => {
+      let saveProductOptions = JSON.parse(
+        localStorage.getItem('saveProductOptions'),
+      );
+
+      saveProductOptions.width = true;
+      localStorage.setItem(
+        'saveProductOptions',
+        JSON.stringify(saveProductOptions),
+      );
+      location.reload();
+    });
+  }
+
+  if (saveProductWidthBtn) {
+    saveProductWidthBtn.addEventListener('click', () => {
+      let saveProductOptions = JSON.parse(
+        localStorage.getItem('saveProductOptions'),
+      );
+      let tempProduct = JSON.parse(localStorage.getItem('tempProduct'));
+      const saveWidthInput = document.getElementsByClassName(
+        'admin_area_save_product_width_input',
+      )[0];
+      const newWidth = {
+        width: saveWidthInput.value,
+      };
+
+      if (tempProduct.width) {
+        tempProduct.width = [...tempProduct.width, newWidth];
+      } else {
+        tempProduct.width = [newWidth];
+      }
+
+      localStorage.setItem('tempProduct', JSON.stringify(tempProduct));
+      saveProductOptions.width = false;
+      localStorage.setItem(
+        'saveProductOptions',
+        JSON.stringify(saveProductOptions),
+      );
+      location.reload();
+    });
+  }
+
+  if (addProductDescriptionBulletBtn) {
+    addProductDescriptionBulletBtn.addEventListener('click', () => {
+      let saveProductOptions = JSON.parse(
+        localStorage.getItem('saveProductOptions'),
+      );
+
+      saveProductOptions.description = true;
+      localStorage.setItem(
+        'saveProductOptions',
+        JSON.stringify(saveProductOptions),
+      );
+      location.reload();
+    });
+  }
+
+  if (saveProductDescriptionBulletBtn) {
+    saveProductDescriptionBulletBtn.addEventListener('click', () => {
+      let saveProductOptions = JSON.parse(
+        localStorage.getItem('saveProductOptions'),
+      );
+      let tempProduct = JSON.parse(localStorage.getItem('tempProduct'));
+      const saveDescriptionBulletInput = document.getElementsByClassName(
+        'admin_area_save_product_description_bullet__input',
+      )[0];
+      const newDescriptionBullet = saveDescriptionBulletInput.value;
+
+      if (tempProduct.description) {
+        tempProduct.description = [
+          ...tempProduct.description,
+          newDescriptionBullet,
+        ];
+      } else {
+        tempProduct.description = [newDescriptionBullet];
+      }
+
+      localStorage.setItem('tempProduct', JSON.stringify(tempProduct));
+      saveProductOptions.description = false;
+      localStorage.setItem(
+        'saveProductOptions',
+        JSON.stringify(saveProductOptions),
+      );
+      location.reload();
+    });
+  }
+
+  if (saveProductBtn) {
+    saveProductBtn.addEventListener('click', () => {
+      const tempProduct = JSON.parse(localStorage.getItem('tempProduct'));
+      const productDataInputs = [
+        ...document.getElementsByClassName(
+          'admin_area_save_product_data_input',
+        ),
+      ];
+
+      if (!productDataInputs.find(input => input.value === '')) {
+        const randomId = Math.random(0, 1000000000)
+          .toString()
+          .split('.')
+          .join('');
+
+        let newProduct = { id: randomId, ...tempProduct };
+        productDataInputs.forEach(input => {
+          if (input.id === 'price' || input.id === 'inStock') {
+            newProduct[input.id] = Number(input.value);
+          } else {
+            newProduct[input.id] = input.value;
+          }
+        });
+
+        const products = JSON.parse(localStorage.getItem('products'));
+        if (products) {
+          localStorage.setItem(
+            'products',
+            JSON.stringify([...products, newProduct]),
+          );
+        } else {
+          localStorage.setItem('products', JSON.stringify([newProduct]));
+        }
+
+        localStorage.setItem('tempProduct', JSON.stringify({}));
+      }
+    });
+  }
+}
+
 if (page === 'favorites') {
   const favoritesList = document.getElementById('favorites-list');
 

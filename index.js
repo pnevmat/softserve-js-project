@@ -5,6 +5,7 @@ import { productPage } from './src/js/pages/product.js';
 import { favoritesPage } from './src/js/pages/favorites.js';
 import { getLocation } from './src/js/helpers/getLocation.js';
 import { shoppingCart } from './src/js/pages/shoppingCart.js';
+import { adminArea } from './src/js/pages/adminArea.js';
 
 const router = () => {
   const location = getLocation();
@@ -29,6 +30,9 @@ const router = () => {
       break;
     case 'shopping-cart':
       root.innerHTML = shoppingCart(location);
+      break;
+    case 'admin-area':
+      root.innerHTML = adminArea(location);
       break;
     default:
       break;
