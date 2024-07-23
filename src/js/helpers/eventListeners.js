@@ -1,5 +1,6 @@
 import { getLocation } from './getLocation.js';
-import { productsArr } from './productsArr.js';
+import { getProducts } from '../api/getProducts.js';
+import { addProduct } from '../api/addProduct.js';
 
 const { page } = getLocation();
 const search = document.getElementById('search');
@@ -32,7 +33,7 @@ if (page === 'products') {
     button.addEventListener('click', e => {
       e.preventDefault();
 
-      const product = productsArr.find(product => product.id === button.id);
+      const product = getProducts().find(product => product.id === button.id);
       const favoriteProducts = JSON.parse(localStorage.getItem('favorites'));
 
       if (favoriteProducts) {
@@ -496,15 +497,7 @@ if (page === 'admin-area') {
           }
         });
 
-        const products = JSON.parse(localStorage.getItem('products'));
-        if (products) {
-          localStorage.setItem(
-            'products',
-            JSON.stringify([...products, newProduct]),
-          );
-        } else {
-          localStorage.setItem('products', JSON.stringify([newProduct]));
-        }
+        addProduct(newProduct);
 
         localStorage.setItem('tempProduct', JSON.stringify({}));
       }
@@ -548,7 +541,7 @@ if (page === 'shopping-cart') {
 
   changeQuantitySelects.forEach(select =>
     select.addEventListener('change', e => {
-      const product = productsArr.find(product => product.id === select.id);
+      const product = getProducts().find(product => product.id === select.id);
       const cart = JSON.parse(localStorage.getItem('cart'));
 
       const newCartArr = cart.map(cartProduct => {
@@ -572,7 +565,7 @@ if (page === 'shopping-cart') {
 
   removeFromCartBtns.forEach(btn =>
     btn.addEventListener('click', () => {
-      const product = productsArr.find(product => product.id === btn.id);
+      const product = getProducts().find(product => product.id === btn.id);
       const cart = JSON.parse(localStorage.getItem('cart'));
 
       const newCartArr = cart.filter(
@@ -588,7 +581,7 @@ if (page === 'shopping-cart') {
   ];
 
   addToCartBtns.forEach(btn => {
-    const product = productsArr.find(product => product.id === btn.id);
+    const product = getProducts().find(product => product.id === btn.id);
 
     if (product) {
       btn.addEventListener('click', () => {
@@ -619,7 +612,7 @@ if (page === 'shopping-cart') {
   toggleFavoritesBtns.forEach(btn =>
     btn.addEventListener('click', e => {
       e.preventDefault();
-      const product = productsArr.find(product => product.id === btn.id);
+      const product = getProducts().find(product => product.id === btn.id);
       const favorites = JSON.parse(localStorage.getItem('favorites'));
       const activeImg = btn.children[0];
 
@@ -652,7 +645,7 @@ if (page === 'product') {
   )[0];
 
   button.addEventListener('click', () => {
-    const product = productsArr.find(product => product.id === button.id);
+    const product = getProducts().find(product => product.id === button.id);
     const favorites = JSON.parse(localStorage.getItem('favorites'));
     const activeImg = document.getElementsByClassName(
       'product_images_favorite_img',
@@ -683,7 +676,9 @@ if (page === 'product') {
   )[0];
 
   addToCartBtn.addEventListener('click', () => {
-    const product = productsArr.find(product => product.id === addToCartBtn.id);
+    const product = getProducts().find(
+      product => product.id === addToCartBtn.id,
+    );
     const cart = JSON.parse(localStorage.getItem('cart'));
 
     product.quantity = 0;

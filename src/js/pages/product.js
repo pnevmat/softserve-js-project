@@ -2,13 +2,16 @@ import { header } from '../components/header.js';
 import { footer } from '../components/footer.js';
 import { productPageImg } from '../components/productPageImg.js';
 import { productPageColor } from '../components/productPageColor.js';
-import { productsArr } from '../helpers/productsArr.js';
+import { getProducts } from '../api/getProducts.js';
 import { getFilteredProducts } from '../helpers/getFilteredProducts.js';
 import { getFilters } from '../helpers/getFilters.js';
 
 export function productPage({ page, baseUrlFolder }) {
   const searchParams = window.location.search.split('?').join('');
-  const product = getFilteredProducts(productsArr, getFilters(searchParams))[0];
+  const product = getFilteredProducts(
+    getProducts(),
+    getFilters(searchParams),
+  )[0];
 
   const favorites = JSON.parse(localStorage.getItem('favorites'));
   const active = favorites.find(favorite => favorite.id === product.id);

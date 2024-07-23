@@ -5,7 +5,7 @@ import { leftFilter } from '../components/leftFilter.js';
 import { productCard } from '../components/productCard.js';
 import { getTitle } from '../helpers/getTitle.js';
 import { getFilteredProducts } from '../helpers/getFilteredProducts.js';
-import { productsArr } from '../helpers/productsArr.js';
+import { getProducts } from '../api/getProducts.js';
 import { getFilters } from '../helpers/getFilters.js';
 
 export function productsPage({ page, baseUrlFolder }) {
@@ -151,7 +151,7 @@ export function productsPage({ page, baseUrlFolder }) {
         .split('=')[1]
     : null;
   const filteredProducts = getFilteredProducts(
-    productsArr,
+    getProducts(),
     getFilters(searchParams),
   ).sort((a, b) => {
     if (sortParam === 'price-asc' && a.price < b.price) {
