@@ -14,7 +14,7 @@ export function productCard(product, baseUrlFolder, active) {
 			>
 				<div>
 					<div>
-						<img class="products_list_product_card_img" src="${product.img}" />
+						<img class="products_list_product_card_img" src="${product.img.url}" />
 					</div>
 				</div>
 				<div class="products_list_product_card_text_container">

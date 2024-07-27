@@ -3,9 +3,9 @@ import { adminCategoriesList } from '../components/adminCategoriesList.js';
 import { adminProductCard } from '../components/adminProductCard.js';
 import { adminProductPage } from '../components/adminProductPage.js';
 import { footer } from '../components/footer.js';
-import { productsArr } from '../helpers/productsArr.js';
+import { getProducts } from '../api/getProducts.js';
 
-export function adminArea({ page, baseUrlFolder }) {
+export async function adminArea({ page, baseUrlFolder }) {
   const activeTab = localStorage.getItem('activeTab');
   const saveCategory = JSON.parse(localStorage.getItem('saveCategory'));
   const categories = JSON.parse(localStorage.getItem('categories'));
@@ -26,6 +26,8 @@ export function adminArea({ page, baseUrlFolder }) {
 
     return tempProduct;
   }
+
+  const products = await getProducts();
 
   // const categories = [
   //   {
@@ -108,9 +110,9 @@ export function adminArea({ page, baseUrlFolder }) {
 							${
                 editProductId === ''
                   ? `<ul class="admin_area_products_list">
-											${productsArr.map(product => `${adminProductCard(product)}`).join('')}
+											${products.map(product => `${adminProductCard(product)}`).join('')}
 										</ul>`
-                  : adminProductPage(tempProduct, editProductId)
+                  : await adminProductPage(tempProduct, editProductId)
               }
 						</div>
 					`

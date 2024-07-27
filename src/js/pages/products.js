@@ -8,7 +8,7 @@ import { getFilteredProducts } from '../helpers/getFilteredProducts.js';
 import { getProducts } from '../api/getProducts.js';
 import { getFilters } from '../helpers/getFilters.js';
 
-export function productsPage({ page, baseUrlFolder }) {
+export async function productsPage({ page, baseUrlFolder }) {
   const searchParams = window.location.search.split('?').join('');
   const categoriesArr = searchParams.split('&').map(category => {
     const splitedCategory = category.split('=');
@@ -150,10 +150,13 @@ export function productsPage({ page, baseUrlFolder }) {
         .find(param => param.includes('sort'))
         .split('=')[1]
     : null;
-  const filteredProducts = getFilteredProducts(
-    getProducts(),
+
+  const filteredProducts = await getFilteredProducts(
+    await getProducts(),
     getFilters(searchParams),
-  ).sort((a, b) => {
+  );
+
+  const sortedProducts = await filteredProducts.sort((a, b) => {
     if (sortParam === 'price-asc' && a.price < b.price) {
       return -1;
     }
@@ -175,7 +178,7 @@ export function productsPage({ page, baseUrlFolder }) {
             }</h1>
             <p class="products_sort_found">
 							<span>
-								(${filteredProducts.length})
+								(${sortedProducts.length})
 							</span>
 							<span>items found</span>
 						</p>
@@ -214,7 +217,7 @@ export function productsPage({ page, baseUrlFolder }) {
 							</a>
             </div>
             <ul id="products-list" class="products_list">
-							${filteredProducts
+							${sortedProducts
                 .map(product => {
                   const active = favorites.find(
                     favorite => favorite.id === product.id,

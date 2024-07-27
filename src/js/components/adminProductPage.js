@@ -1,6 +1,8 @@
 import { adminProductPageColor } from '../components/adminProductPageColor.js';
+import { adminProductPageImg } from '../components/adminProductPageImg.js';
+import { getProduct } from '../api/getProduct.js';
 
-export function adminProductPage(product, editProductId) {
+export async function adminProductPage(product, editProductId) {
   const tempProduct = JSON.parse(localStorage.getItem('tempProduct'));
   const getSaveProductOptions = () => {
     let saveProductOptions = JSON.parse(
@@ -17,17 +19,27 @@ export function adminProductPage(product, editProductId) {
     return saveProductOptions;
   };
 
+  const getEditProduct = async () => {
+    if (editProductId !== '' && editProductId !== 'null') {
+      return await getProduct(editProductId);
+    } else {
+      return;
+    }
+  };
+
+  const editProduct = await getEditProduct();
+
   return `
 		<div class="admin_area_product_container">
 				<div class="admin_area_product_images_container">
           <div>
 						<input
-							id="${`${product.id ? product.id : 'null'}`}"
+							id="${`${editProduct ? editProduct.id : 'null'}`}"
 							class="admin_area_save_main_img_input"
 							type="file"
 						/>
 						<button 
-							id="${product.id ? product.id : 'null'}"
+							id="${editProduct ? editProduct.id : 'null'}"
 							class="admin_area_save_main_img_btn"
 						>
 							save main image
@@ -35,12 +47,12 @@ export function adminProductPage(product, editProductId) {
 					</div>
 					<div>
 						<input
-							id="${`${product.id ? product.id : 'null'}`}"
+							id="${`${editProduct ? editProduct.id : 'null'}`}"
 							class="admin_area_save_img_set_img_input"
 							type="file"
 						/>
 						<button 
-							id="${product.id ? product.id : 'null'}"
+							id="${editProduct ? editProduct.id : 'null'}"
 							class="admin_area_save_img_set_img_btn"
 						>
 							save image
@@ -48,15 +60,19 @@ export function adminProductPage(product, editProductId) {
 					</div>
 					<ul class="admin_area_product_images_list">
 						<li class="admin_area_product_images_list_item-first">
-							${product.imgSet?.length > 0 ? `<img src="${product.imgSet[0]}" alt="" />` : ''}
+							${
+                editProduct?.imgSet?.length > 0
+                  ? `<img src="${editProduct.imgSet[0].url}" alt="" />`
+                  : ''
+              }
 						</li>
 						<li>
 							<ul class="admin_area_product_images_list_item_secondary_list">
 								${
-                  product.imgSet?.length > 0
-                    ? product.imgSet
+                  editProduct?.imgSet?.length > 0
+                    ? editProduct.imgSet
                         .map((img, i) => {
-                          if (i !== 0) return productPageImg(img);
+                          if (i !== 0) return adminProductPageImg(img);
                           if (i === 0) return '';
                         })
                         .join('')
@@ -72,19 +88,19 @@ export function adminProductPage(product, editProductId) {
 							<div>
 								<input 
 									class="admin_area_save_product_data_input"
-									id="${product.id ? product.id : 'brand'}"
+									id="${editProduct ? editProduct.id : 'brand'}"
 									type="text"
 									placeholder="Brand name"
-									value="${product.brand ? product.brand : ''}"
+									value="${editProduct ? editProduct.brand : ''}"
 								/>
 							</div>
 							<div>
 								<input
 									class="admin_area_save_product_data_input"
-									id="${product.id ? product.id : 'name'}"
+									id="${editProduct ? editProduct.id : 'name'}"
 									type="text"
 									placeholder="Product name"
-									value="${product.name ? product.name : ''}"
+									value="${editProduct ? editProduct.name : ''}"
 								/>
 							</div>
 						</div>
@@ -96,7 +112,7 @@ export function adminProductPage(product, editProductId) {
 										id="${'price'}"
 										type="text"
 										placeholder="Price"
-										value="${product.price ? product.price : ''}"
+										value="${editProduct ? editProduct.price : ''}"
 									/>
 								</div>
 								 	<div>
@@ -105,7 +121,7 @@ export function adminProductPage(product, editProductId) {
 											id="${'category'}"
 											type="text"
 											placeholder="Product category"
-											value="${product.category ? product.category : ''}"
+											value="${editProduct ? editProduct.category : ''}"
 										/>
 									</div>
 									<div>
@@ -114,7 +130,7 @@ export function adminProductPage(product, editProductId) {
 											id="${'subcategory'}"
 											type="text"
 											placeholder="Product subcategory"
-											value="${product.subcategory ? product.subcategory : ''}"
+											value="${editProduct ? editProduct.subcategory : ''}"
 										/>
 									</div>
 									<div>
@@ -123,7 +139,7 @@ export function adminProductPage(product, editProductId) {
 											id="${'subsubcategory'}"
 											type="text"
 											placeholder="Product subsubcategory"
-											value="${product.subsubcategory ? product.subsubcategory : ''}"
+											value="${editProduct ? editProduct.subsubcategory : ''}"
 										/>
 									</div>
 									<div>
@@ -132,7 +148,7 @@ export function adminProductPage(product, editProductId) {
 											id="${'inStock'}"
 											type="text"
 											placeholder="In stock quantity"
-											value="${product.inStock ? product.inStock : ''}"
+											value="${editProduct ? editProduct.inStock : ''}"
 										/>
 									</div>
 							</div>
@@ -173,9 +189,9 @@ export function adminProductPage(product, editProductId) {
 								class="admin_area_product_description_color_filters_cards_list"
 							>
 									${
-                    product.color
-                      ? product.color
-                          .map(color => productPageColor(color))
+                    editProduct
+                      ? editProduct.color
+                          .map(color => adminProductPageColor(color))
                           .join('')
                       : tempProduct.color
                       ? tempProduct.color
@@ -216,8 +232,8 @@ export function adminProductPage(product, editProductId) {
                 }
 								<ul class="admin_area_product_description_size_filters_list">
 									${
-                    product.size
-                      ? product.size
+                    editProduct
+                      ? editProduct.size
                           .map(
                             size => `
 													<li
@@ -266,8 +282,8 @@ export function adminProductPage(product, editProductId) {
                 }
 								<ul class="admin_area_product_description_width_filters_list">
 									${
-                    product.width
-                      ? product.width
+                    editProduct
+                      ? editProduct.width
                           .map(
                             width => `
 												<li
@@ -300,7 +316,7 @@ export function adminProductPage(product, editProductId) {
 										id="${'style'}"
 										type="text"
 										placeholder="style"
-										value="${product.style ? product.style : ''}"
+										value="${editProduct ? editProduct.style : ''}"
 									/>
 								</div>
 								<div>
@@ -309,7 +325,7 @@ export function adminProductPage(product, editProductId) {
 										id="${'occasion'}"
 										type="text"
 										placeholder="occasion"
-										value="${product.occasion ? product.occasion : ''}"
+										value="${editProduct ? editProduct.occasion : ''}"
 									/>
 								</div>
 								<div>
@@ -318,7 +334,7 @@ export function adminProductPage(product, editProductId) {
 										id="${'feature'}"
 										type="text"
 										placeholder="feature"
-										value="${product.feature ? product.feature : ''}"
+										value="${editProduct ? editProduct.feature : ''}"
 									/>
 								</div>
 								<div>
@@ -327,7 +343,7 @@ export function adminProductPage(product, editProductId) {
 										id="${'material'}"
 										type="text"
 										placeholder="material"
-										value="${product.material ? product.material : ''}"
+										value="${editProduct ? editProduct.material : ''}"
 									/>
 								</div>
 								<div>
@@ -336,7 +352,7 @@ export function adminProductPage(product, editProductId) {
 										id="${'pattern'}"
 										type="text"
 										placeholder="pattern"
-										value="${product.pattern ? product.pattern : ''}"
+										value="${editProduct ? editProduct.pattern : ''}"
 									/>
 								</div>
 								<div>
@@ -345,7 +361,7 @@ export function adminProductPage(product, editProductId) {
 										id="${'theme'}"
 										type="text"
 										placeholder="theme"
-										value="${product.theme ? product.theme : ''}"
+										value="${editProduct ? editProduct.theme : ''}"
 									/>
 								</div>
 								<div>
@@ -354,7 +370,7 @@ export function adminProductPage(product, editProductId) {
 										id="${'accent'}"
 										type="text"
 										placeholder="accent"
-										value="${product.accent ? product.accent : ''}"
+										value="${editProduct ? editProduct.accent : ''}"
 									/>
 								</div>
 							</div>
@@ -393,8 +409,8 @@ export function adminProductPage(product, editProductId) {
 										class="admin_area_product_description_information_description_list"
 									>
 										${
-                      product.description?.length > 0
-                        ? product.description
+                      editProduct?.description?.length > 0
+                        ? editProduct.description
                             .map(
                               line => `
 																<li
@@ -406,15 +422,17 @@ export function adminProductPage(product, editProductId) {
                             )
                             .join('')
                         : tempProduct.description?.length > 0
-                        ? tempProduct.description.map(
-                            line => `
+                        ? tempProduct.description
+                            .map(
+                              line => `
 															<li
 																class="admin_area_product_description_information_description_list_item"
 															>
 																${line}
 															</li>
 													`,
-                          )
+                            )
+                            .join('')
                         : ''
                     }
 									</ul>
@@ -425,7 +443,9 @@ export function adminProductPage(product, editProductId) {
 				</div>
 				<div class="admin_area_save_product_btn_container">
 					<button
-						id="${product.id ? product.id : 'null'}" class="admin_area_save_product_btn"
+						id="${
+              editProduct ? editProduct.id : 'null'
+            }" class="admin_area_save_product_btn"
 					>
 						save product
 					</button>

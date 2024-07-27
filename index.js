@@ -7,7 +7,7 @@ import { getLocation } from './src/js/helpers/getLocation.js';
 import { shoppingCart } from './src/js/pages/shoppingCart.js';
 import { adminArea } from './src/js/pages/adminArea.js';
 
-const router = () => {
+const router = async () => {
   const location = getLocation();
 
   const root = document.getElementById('root');
@@ -20,7 +20,7 @@ const router = () => {
       root.innerHTML = shippingAndDeliveryQuestionsPage(location);
       break;
     case 'products':
-      root.innerHTML = productsPage(location);
+      root.innerHTML = await productsPage(location);
       break;
     case 'product':
       root.innerHTML = productPage(location);
@@ -32,7 +32,7 @@ const router = () => {
       root.innerHTML = shoppingCart(location);
       break;
     case 'admin-area':
-      root.innerHTML = adminArea(location);
+      root.innerHTML = await adminArea(location);
       break;
     default:
       break;
